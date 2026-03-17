@@ -198,11 +198,24 @@ section:last-child{border-bottom:none}
 .sec-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .sec-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.8vw,46px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:18px;color:var(--ink)}
 .sec-body{font-size:15px;color:var(--muted);line-height:1.82;max-width:600px}
+
+/* ── Site-wide Navigation Drawer ── */
+.ham-btn{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;border-radius:6px;border:none;background:none;flex-shrink:0;margin-right:8px}
+.ham-btn span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform 0.2s}
+.ham-overlay{display:none;position:fixed;inset:0;z-index:299;background:rgba(0,0,0,0.25)}
+.ham-overlay.open{display:block}
+.ham-drawer{position:fixed;top:0;left:-270px;width:250px;height:100vh;z-index:300;background:#fff;border-right:1px solid var(--border);transition:left 0.25s ease;display:flex;flex-direction:column}
+.ham-drawer.open{left:0}
+.ham-drawer-head{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;padding:16px 20px;border-bottom:1px solid var(--border);color:var(--ink)}
+.ham-drawer a{display:block;padding:13px 20px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:all 0.15s}
+.ham-drawer a:hover{color:var(--ink);background:var(--off)}
+.ham-drawer a.current{color:var(--ink);font-weight:600;background:var(--off)}
 </style>
 </head>
 <body>
 
 <nav>
+  <button class="ham-btn" onclick="toggleHam()" aria-label="Open menu"><span></span><span></span><span></span></button>
   <div class="nav-logo">MARKETWAKE</div>
   <div class="nav-links">
     <button class="nav-link" onclick="go('moves')">The 5 Moves</button>
@@ -216,6 +229,16 @@ section:last-child{border-bottom:none}
     <button class="nav-link" onclick="go('competition')">Competition</button>
   </div>
 </nav>
+<div class="ham-overlay" id="hamOverlay" onclick="toggleHam()"></div>
+<div class="ham-drawer" id="hamDrawer">
+  <div class="ham-drawer-head">MARKETWAKE</div>
+  <a href="/">Response Analysis</a>
+  <a href="/team-archetypes.html">Team Archetypes</a>
+  <a href="/offering-lead.html">Offering Lead</a>
+  <a href="/ai-playbook.html">AI Playbook</a>
+  <a href="/50m-roadmap.html" class="current">50M Roadmap</a>
+</div>
+
 
 <div class="page">
 
@@ -1109,5 +1132,10 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
   </div>
 </section>
+
+<script>
+function toggleHam(){document.getElementById('hamDrawer').classList.toggle('open');document.getElementById('hamOverlay').classList.toggle('open')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('hamDrawer').classList.remove('open');document.getElementById('hamOverlay').classList.remove('open')}});
+</script>
 </body>
 </html>
