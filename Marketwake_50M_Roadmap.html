@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketwake — The $50M Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0E0D;--white:#FFFFFF;--off:#F8F7F5;--warm:#F0EDE6;
+  --orange:#E85D26;--orange-tint:#FEF0EA;
+  --muted:#807870;--border:rgba(14,14,13,0.09);--border-mid:rgba(14,14,13,0.15);
+  --green:#0F6E56;--green-tint:#E1F5EE;
+  --blue:#185FA5;--blue-tint:#E6F1FB;
+  --purple:#534AB7;--purple-tint:#EEEDFE;
+  --amber:#BA7517;--amber-tint:#FAEEDA;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--ink)}
+.nav-links{display:flex;gap:2px}
+.nav-link{font-size:11px;font-weight:500;color:var(--muted);padding:4px 10px;border-radius:4px;cursor:pointer;border:none;background:none;white-space:nowrap;transition:color 0.15s}
+.nav-link:hover{color:var(--ink)}
+
+.page{padding-top:52px}
+section{padding:72px 0;border-bottom:1px solid var(--border)}
+section:last-child{border-bottom:none}
+.container{max-width:1080px;margin:0 auto;padding:0 44px}
+
+.sec-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,44px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:16px;color:var(--ink)}
+.sec-title em{font-style:italic;color:var(--orange)}
+.sec-body{font-size:15px;color:var(--muted);line-height:1.82;max-width:620px}
+.sec-body strong{font-weight:500;color:var(--ink)}
+
+/* HERO */
+.hero{padding:72px 0 60px;background:var(--white);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(14,14,13,0.022) 79px,rgba(14,14,13,0.022) 80px);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;opacity:0;animation:fadeUp 0.5s 0.1s ease both}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,120px);line-height:0.91;letter-spacing:0.01em;margin-bottom:28px;color:var(--ink);opacity:0;animation:fadeUp 0.5s 0.25s ease both}
+.hero-title em{color:var(--orange);font-style:normal}
+.hero-sub{font-size:17px;font-weight:300;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:36px;opacity:0;animation:fadeUp 0.5s 0.4s ease both}
+
+/* REVENUE ARC */
+.rev-arc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border:1px solid var(--border);border-radius:14px;overflow:hidden;opacity:0;animation:fadeUp 0.5s 0.55s ease both}
+.ra-node{padding:20px 22px;position:relative}
+.ra-node:not(:last-child){border-right:1px solid var(--border)}
+.ra-node.current{background:var(--off)}
+.ra-node.y1{background:var(--orange-tint)}
+.ra-node.y3{background:rgba(15,110,86,0.06)}
+.ra-node.y5{background:rgba(83,74,183,0.06)}
+.ra-tag{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+.ra-tag.current{color:var(--muted)}
+.ra-tag.y1{color:var(--orange)}
+.ra-tag.y3{color:var(--green)}
+.ra-tag.y5{color:var(--purple)}
+.ra-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:0.95;margin-bottom:4px}
+.ra-num.current{color:var(--ink)}
+.ra-num.y1{color:var(--orange)}
+.ra-num.y3{color:var(--green)}
+.ra-num.y5{color:var(--purple)}
+.ra-label{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* FIVE MOVES */
+.moves-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:36px}
+.move-row{display:grid;grid-template-columns:52px 1fr auto;gap:0;border-bottom:1px solid var(--border);background:var(--white)}
+.move-row:last-child{border-bottom:none}
+.move-row:nth-child(even){background:var(--off)}
+.move-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);padding:18px 0 18px 20px;line-height:1.1}
+.move-body{padding:16px 20px}
+.move-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.move-text{font-size:12px;color:var(--muted);line-height:1.65}
+.move-text strong{font-weight:500;color:var(--ink)}
+.move-tag{padding:16px 20px 16px 0;display:flex;align-items:flex-start;padding-top:18px}
+.m-chip{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.chip-now{background:var(--orange-tint);color:var(--orange)}
+.chip-y1{background:rgba(15,110,86,0.1);color:var(--green)}
+.chip-y3{background:rgba(83,74,183,0.1);color:var(--purple)}
+.chip-decide{background:var(--off);color:var(--muted);border:1px solid var(--border)}
+
+/* PHASE GRID */
+.phase-wrap{display:flex;flex-direction:column;gap:32px;margin-top:36px}
+.phase{border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.phase-header{padding:20px 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;border-bottom:1px solid var(--border)}
+.phase-header.ph1{background:var(--orange-tint)}
+.phase-header.ph2{background:var(--green-tint)}
+.phase-header.ph3{background:var(--purple-tint)}
+.phase-label{font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase}
+.ph1 .phase-label{color:var(--orange)}
+.ph2 .phase-label{color:var(--green)}
+.ph3 .phase-label{color:var(--purple)}
+.phase-title{font-size:18px;font-weight:500;color:var(--ink);line-height:1.2}
+.phase-rev{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1}
+.ph1 .phase-rev{color:var(--orange)}
+.ph2 .phase-rev{color:var(--green)}
+.ph3 .phase-rev{color:var(--purple)}
+.phase-body{padding:0}
+.phase-cols{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.phase-cols:last-child{border-bottom:none}
+.phase-col{padding:18px 22px;border-right:1px solid var(--border)}
+.phase-col:last-child{border-right:none}
+.pc-label{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.pc-item{font-size:12px;color:var(--muted);line-height:1.6;padding:4px 0;border-bottom:1px solid var(--border);display:flex;gap:7px;align-items:flex-start}
+.pc-item:last-child{border-bottom:none}
+.pc-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;background:var(--muted)}
+.pc-item strong{font-weight:500;color:var(--ink)}
+
+/* MILESTONES */
+.milestone-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:32px}
+.ms-card{background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.ms-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.ms-phase{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase}
+.ms-title{font-size:13px;font-weight:500;color:var(--ink)}
+.ms-body{padding:14px 16px}
+.ms-item{font-size:12px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.55;display:flex;gap:6px;align-items:flex-start}
+.ms-item:last-child{border-bottom:none}
+.ms-check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--border-mid);flex-shrink:0;margin-top:2px}
+
+/* TEAM MILESTONES */
+.team-ms-wrap{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:32px}
+.tms-row{display:grid;grid-template-columns:160px 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.tms-row:last-child{border-bottom:none}
+.tms-row.header{background:var(--ink)}
+.tms-cell{padding:12px 16px;border-right:1px solid var(--border)}
+.tms-cell:last-child{border-right:none}
+.tms-row.header .tms-cell{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+.tms-team{font-size:12px;font-weight:500;color:var(--ink)}
+.tms-role{font-size:10px;color:var(--muted)}
+.tms-item{font-size:11px;color:var(--muted);line-height:1.55}
+.tms-item strong{font-weight:500;color:var(--ink);display:block;margin-bottom:1px}
+.tms-row:nth-child(odd):not(.header){background:var(--white)}
+.tms-row:nth-child(even):not(.header){background:var(--off)}
+
+/* SIGNAL ROWS */
+.signal-row-wrap{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:20px}
+.sr{display:grid;grid-template-columns:1fr auto;gap:16px;padding:12px 18px;border-bottom:1px solid var(--border);align-items:center;background:var(--white)}
+.sr:last-child{border-bottom:none}
+.sr:nth-child(even){background:var(--off)}
+.sr-text{font-size:13px;color:var(--muted);line-height:1.5}
+.sr-text strong{font-weight:500;color:var(--ink)}
+.sr-badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.badge-lead{background:#EAF3DE;color:#3B6D11}
+.badge-lag{background:#E6F1FB;color:#185FA5}
+.badge-culture{background:var(--orange-tint);color:var(--orange)}
+
+/* CLOSING */
+.closing{background:var(--warm);border:1px solid var(--border-mid);border-radius:16px;padding:40px;margin-top:40px}
+.closing-title{font-family:'DM Serif Display',serif;font-size:26px;font-style:italic;color:var(--ink);line-height:1.4;margin-bottom:16px}
+.closing-body{font-size:14px;color:var(--muted);line-height:1.82}
+.closing-body strong{font-weight:500;color:var(--ink)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fi{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fi.vis{opacity:1;transform:none}
+.d1{transition-delay:0.07s}.d2{transition-delay:0.14s}.d3{transition-delay:0.21s}
+
+@media(max-width:820px){
+  .rev-arc{grid-template-columns:1fr 1fr}
+  .phase-cols{grid-template-columns:1fr}
+  .phase-col{border-right:none;border-bottom:1px solid var(--border)}
+  .milestone-grid{grid-template-columns:1fr}
+  .tms-row{grid-template-columns:1fr 1fr}
+  .move-row{grid-template-columns:52px 1fr}
+  .move-tag{display:none}
+  nav .nav-links{display:none}
+}
+
+/* FROM PLAYBOOK */
+.comp-wrap{overflow-x:auto;margin-top:32px}
+.comp-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.comp-chip{display:inline-block;font-size:9px;padding:2px 7px;border-radius:20px;font-weight:500;margin-top:4px}
+.comp-row-label{font-size:11px;font-weight:500;color:var(--ink);display:block;margin-bottom:2px}
+.val-row{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.val-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.val-text{font-size:12px;color:var(--muted);line-height:1.65}
+.val-now-label{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.val-future-label{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.val-status{display:inline-flex;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-bottom:8px}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.vision-card{background:var(--warm);border:1px solid var(--border-mid);border-radius:16px;padding:36px 40px;margin:32px 0;position:relative;overflow:hidden}
+.vision-text{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.75;color:var(--ink);margin-bottom:28px}
+.vision-pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.vision-pillars{grid-template-columns:1fr}
+.vp-num{font-size:11px;font-weight:500;color:var(--orange);margin-bottom:5px}
+.vp-title{font-size:12px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.vp-body{font-size:11px;color:var(--muted);line-height:1.5}
+.sb-quote{font-family:'DM Serif Display',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.62;margin-bottom:8px}
+.sb-inner{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.sb-inner{grid-template-columns:1fr}
+.sb-stat{font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--orange);line-height:0.9;white-space:nowrap}
+.sb-attr{font-size:11px;color:var(--orange);letter-spacing:0.07em;font-weight:500;text-transform:uppercase}
+.stat-band{background:var(--warm);border:1px solid var(--border-mid);border-radius:14px;padding:32px 36px;margin:32px 0}
+.sec-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.8vw,46px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:18px;color:var(--ink)}
+.sec-body{font-size:15px;color:var(--muted);line-height:1.82;max-width:600px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MARKETWAKE</div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="go('moves')">The 5 Moves</button>
+    <button class="nav-link" onclick="go('phases')">Phase Roadmap</button>
+    <button class="nav-link" onclick="go('company-milestones')">Company Milestones</button>
+    <button class="nav-link" onclick="go('team-milestones')">Team Milestones</button>
+    <button class="nav-link" onclick="go('signals')">Success Signals</button>
+    <button class="nav-link" onclick="go('bd')">BD Engine</button>
+    <button class="nav-link" onclick="go('bd')">BD Engine</button>
+    <button class="nav-link" onclick="go('vision')">Values</button>
+    <button class="nav-link" onclick="go('competition')">Competition</button>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- HERO -->
+<section style="border-bottom:1px solid var(--border);padding:72px 0 60px">
+  <div class="container">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Marketwake &middot; Growth Roadmap &middot; 2026&ndash;2031</div>
+      <h1 class="hero-title">THE PATH<br>TO <em>$50M.</em></h1>
+      <p class="hero-sub">The vision is aligned. The team named it independently. The themes are clear. What follows is the sequence of decisions, structural moves, and measurable milestones that connect where Marketwake is today to where the whole team described wanting to be.</p>
+      <div class="rev-arc">
+        <div class="ra-node current">
+          <div class="ra-tag current">Today &middot; 2026</div>
+          <div class="ra-num current">$10M</div>
+          <div class="ra-label">50 people &middot; channel-based delivery &middot; generalist teams</div>
+        </div>
+        <div class="ra-node y1">
+          <div class="ra-tag y1">Year 1 &middot; 2027</div>
+          <div class="ra-num y1">$15M</div>
+          <div class="ra-label">Offering model live &middot; ops infrastructure built &middot; AI workflows running</div>
+        </div>
+        <div class="ra-node y3">
+          <div class="ra-tag y3">Year 3 &middot; 2029</div>
+          <div class="ra-num y3">$25M</div>
+          <div class="ra-label">8 offering teams &middot; Offering Leads in place &middot; inbound brand growing</div>
+        </div>
+        <div class="ra-node y5">
+          <div class="ra-tag y5">Year 5 &middot; 2031</div>
+          <div class="ra-num y5">$50M</div>
+          <div class="ra-label">Known brand &middot; specialization deep &middot; compounding systems</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE 5 MOVES -->
+<section id="moves">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">The five structural moves</div>
+      <h2 class="sec-title">You cannot get to $50M<br>from the current structure.<br>These are the <em>five unlocks.</em></h2>
+      <p class="sec-body">Everything in the vision exercise, the synthesis document, and the team profiles points to the same five decisions. Each one is a prerequisite for the next. The sequence matters as much as the moves themselves.</p>
+    </div>
+    <div class="moves-list fi">
+      <div class="move-row">
+        <div class="move-num">01</div>
+        <div class="move-body">
+          <div class="move-title">Transition from channel-based to outcome-based delivery</div>
+          <div class="move-text">Retire the SEO, Content, Design, Paid department structure. Launch eight outcome offering teams, each owning a measurable result. <strong>This is the single structural change that enables every other move.</strong> It changes how you hire, how you sell, how you staff, how you measure, and how clients experience Marketwake. Without this, everything else is cosmetic.</div>
+        </div>
+        <div class="move-tag"><span class="m-chip chip-now">Decide now</span></div>
+      </div>
+      <div class="move-row">
+        <div class="move-num">02</div>
+        <div class="move-body">
+          <div class="move-title">Build the operational infrastructure that makes the model run</div>
+          <div class="move-text">Automated proposals, structured intake, capacity dashboard, billing clarity, KPI infrastructure. <strong>Megan&apos;s ops build is the precondition for everyone else&apos;s vision.</strong> Every team described a future where work flows without friction. None of it is possible without the operational foundation underneath it. This is not internal overhead. This is the condition that enables $50M.</div>
+        </div>
+        <div class="move-tag"><span class="m-chip chip-now">Start now</span></div>
+      </div>
+      <div class="move-row">
+        <div class="move-num">03</div>
+        <div class="move-body">
+          <div class="move-title">Install AI as a baseline standard across every function</div>
+          <div class="move-text">Proposals, reports, briefs, audits, client communication, thought leadership &mdash; seven documented workflows ready to automate today. <strong>This is not a technology project. It is a capacity project.</strong> Every hour recovered from manual execution is an hour available for the strategic and creative work the team described wanting to do. AI adoption is the fastest way to increase the quality of output without increasing headcount.</div>
+        </div>
+        <div class="move-tag"><span class="m-chip chip-now">Start now</span></div>
+      </div>
+      <div class="move-row">
+        <div class="move-num">04</div>
+        <div class="move-body">
+          <div class="move-title">Define a locked ICP and build an intentional sales function</div>
+          <div class="move-text">Eight of ten team members described walking away from certain client types as a prerequisite for their vision. <strong>Client selection is not a sales problem. It is a strategic lever.</strong> The ICP must be company-wide, formally defined, and enforced &mdash; not left to individual judgment at the point of sale. Alongside this, build the sales function that actively pursues the right clients, not just any clients. Inbound and outbound working together, both pointed at the same target.</div>
+        </div>
+        <div class="move-tag"><span class="m-chip chip-now">Decide now</span></div>
+      </div>
+      <div class="move-row">
+        <div class="move-num">05</div>
+        <div class="move-body">
+          <div class="move-title">Build the Marketwake brand as a business development engine</div>
+          <div class="move-text">Eight of ten responses described a future where growth comes from inbound &mdash; clients who find Marketwake because of its reputation, research, and point of view. <strong>Zero described cold outreach as the future model.</strong> The thought leadership content program, the internal marketing engine, Josh&apos;s AI search frameworks, Kristen&apos;s campaign narrative, Bin&apos;s internal media vision &mdash; these are not nice-to-haves. They are the business development strategy. This requires ownership, a budget, and protected time from leadership.</div>
+        </div>
+        <div class="move-tag"><span class="m-chip chip-y1">Year 1 priority</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE ROADMAP -->
+<section id="phases" style="background:var(--off)">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">The phase roadmap</div>
+      <h2 class="sec-title">Three phases.<br>Each one makes the<br>next one <em>possible.</em></h2>
+      <p class="sec-body">Each phase has a revenue target, a structural mandate, a set of things to start, a set of things to stop, and the capability that must exist by the end before the next phase can begin.</p>
+    </div>
+
+    <div class="phase-wrap fi">
+
+      <!-- PHASE 1 -->
+      <div class="phase">
+        <div class="phase-header ph1">
+          <div>
+            <div class="phase-label">Phase 1 &middot; 2026&ndash;2027</div>
+            <div class="phase-title">Build the foundation. Prove the model.</div>
+          </div>
+          <div></div>
+          <div class="phase-rev">$10M &rarr; $15M</div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-cols">
+            <div class="phase-col">
+              <div class="pc-label">Structural mandate</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div><strong>Launch the offering model.</strong> Name the eight teams. Appoint or develop Offering Leads where possible now.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div><strong>Build the Ops infrastructure.</strong> Automated SOWs, structured intake, capacity dashboard, KPI setup. 90-day Megan mandate.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div><strong>Install the seven AI workflows.</strong> Proposals, reports, briefs, audits, client emails, thought leadership, scope communication.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div><strong>Define the locked ICP.</strong> Document who Marketwake serves and who it does not. Formal exit process for misaligned clients.</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">Start doing</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Assign one Offering Lead per team (interim or hired)</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Run all proposals through AI-assisted templates</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Publish one thought leadership piece per month minimum</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>AM growth roadmap for every client &mdash; 90-day rolling</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Weekly cross-offering capacity check (traffic routing)</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Hire the Implementor</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">Stop doing</div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Building proposals from blank pages</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Accepting clients outside the ICP for revenue pressure</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Channel silos on same-client engagements</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Manual reporting decks per client</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>AMs managing individual deliverables</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Generalist hiring into roles that need specialists</div></div>
+            </div>
+          </div>
+          <div class="phase-cols">
+            <div class="phase-col" style="grid-column:span 3">
+              <div class="pc-label">Phase 1 exit criteria &mdash; you cannot enter Phase 2 without these</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>All eight offering teams named with interim leads in place</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>AI workflows live and used across all client-facing roles</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>Ops infrastructure: automated intake, SOW, billing, capacity view</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>ICP defined, documented, and enforced at sales level</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>Implementor hired or role in active search</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--orange)"></div><div>Revenue trajectory on path to $15M</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase">
+        <div class="phase-header ph2">
+          <div>
+            <div class="phase-label">Phase 2 &middot; 2027&ndash;2029</div>
+            <div class="phase-title">Scale the model. Deepen the specialization.</div>
+          </div>
+          <div></div>
+          <div class="phase-rev">$15M &rarr; $25M</div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-cols">
+            <div class="phase-col">
+              <div class="pc-label">Structural mandate</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div><strong>Hire into specialization tracks.</strong> Every new hire goes into an offering team, not a generalist function. Career paths mapped per offering.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div><strong>Offering Leads become Directors.</strong> Each team has a clear leader with authority over quality, staffing, and innovation mandate.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div><strong>Thought leadership engine producing consistently.</strong> Monthly frameworks, quarterly research, leadership team external presence.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div><strong>Performance and creative fully integrated.</strong> One team, one brief, one outcome. No handoffs between paid and creative.</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">Start doing</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Formal career path conversations in every offering team</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Client health scores tracked and reviewed monthly</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Case study library actively built from client outcomes</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Quarterly ICP review &mdash; are we attracting the right clients?</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Brand investment: speaking, events, partnerships, PR</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Revenue per client target increasing YoY</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">Stop doing</div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Hiring generalists because they are available</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Pitching channels as separate line items in new business</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Onboarding clients before ops readiness confirmed</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Low-margin work that requires high execution volume</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:#A32D2D"></div><div>Leadership doing work that Offering Leads should own</div></div>
+            </div>
+          </div>
+          <div class="phase-cols">
+            <div class="phase-col" style="grid-column:span 3">
+              <div class="pc-label">Phase 2 exit criteria &mdash; you cannot enter Phase 3 without these</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>All eight Offering Leads in place with full authority</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Inbound referrals comprising 40%+ of new business pipeline</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Average client retainer size growing YoY</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Teams operating without leadership intervention on delivery</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Marketwake thought leadership referenced externally</div></div>
+                <div class="pc-item"><div class="pc-dot" style="background:var(--green)"></div><div>Revenue trajectory on path to $25M</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase">
+        <div class="phase-header ph3">
+          <div>
+            <div class="phase-label">Phase 3 &middot; 2029&ndash;2031</div>
+            <div class="phase-title">Compound the advantage. Become known.</div>
+          </div>
+          <div></div>
+          <div class="phase-rev">$25M &rarr; $50M</div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-cols">
+            <div class="phase-col">
+              <div class="pc-label">Structural mandate</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Marketwake brand drives significant inbound.</strong> Clients come because of reputation, frameworks, and thought leadership. The sales function converts and qualifies; it does not cold-generate.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Offering teams innovate independently.</strong> Each team is building new capabilities, new frameworks, and new tools without leadership prompting it.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>AI systems compound.</strong> Custom tools, proprietary data, intelligence products that create client stickiness and competitive moat.</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Marketwake is selective about clients.</strong> Not because of capacity constraints, but because of standards. The ICP is enforced from a position of demand.</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">What this looks like</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Clients reference Marketwake frameworks in their own strategy</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Award-winning creative and performance work in portfolio</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Leadership team with national visibility in their disciplines</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Case studies showing measurable revenue growth at scale</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Clients expanding retainers without being asked</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div>Team retention high &mdash; Marketwake is where specialists grow</div></div>
+            </div>
+            <div class="phase-col">
+              <div class="pc-label">The compounding factors</div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Every right client won</strong> attracts two more right clients through referral and reputation</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Every framework built</strong> reduces the time to deliver the next engagement in that offering</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Every piece of thought leadership published</strong> builds the authority that makes future sales easier</div></div>
+              <div class="pc-item"><div class="pc-dot" style="background:var(--purple)"></div><div><strong>Every AI tool built for Marketwake</strong> can eventually become an AI tool offered to clients</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY MILESTONES -->
+<section id="company-milestones">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">Measuring progress</div>
+      <h2 class="sec-title">Company-level milestones.<br>How the whole org knows<br>it is <em>on track.</em></h2>
+      <p class="sec-body">These are not vanity metrics. They are the structural and commercial signals that confirm the model is working &mdash; visible to every person in the company, not just leadership.</p>
+    </div>
+    <div class="milestone-grid fi">
+
+      <div class="ms-card">
+        <div class="ms-header">
+          <span class="ms-phase" style="color:var(--orange)">Phase 1 &middot; 2026&ndash;2027</span>
+          <span class="ms-title">Foundation milestones</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-item"><div class="ms-check"></div><div>All 8 offering teams formally named and launched</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>100% of proposals generated via AI-assisted templates</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>ICP defined in writing and visible to every AM and sales rep</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Ops infrastructure live: intake, capacity, billing automation</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>First thought leadership piece published and distributed</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Implementor hired or actively being recruited</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Revenue reaches $12M with margin improving</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Zero new clients onboarded outside the ICP</div></div>
+        </div>
+      </div>
+
+      <div class="ms-card">
+        <div class="ms-header">
+          <span class="ms-phase" style="color:var(--green)">Phase 2 &middot; 2027&ndash;2029</span>
+          <span class="ms-title">Scale milestones</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-item"><div class="ms-check"></div><div>8 Offering Leads in place with full delivery authority</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>40%+ of new business pipeline from inbound referral</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Average retainer value increasing vs. prior year</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Client NPS tracked quarterly and trending positive</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Monthly thought leadership published by leadership team</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Offering teams running delivery without leadership intervention</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Revenue reaches $20M with margin holding or improving</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Team retention above industry average</div></div>
+        </div>
+      </div>
+
+      <div class="ms-card">
+        <div class="ms-header">
+          <span class="ms-phase" style="color:var(--purple)">Phase 3 &middot; 2029&ndash;2031</span>
+          <span class="ms-title">Compound milestones</span>
+        </div>
+        <div class="ms-body">
+          <div class="ms-item"><div class="ms-check"></div><div>Marketwake brand drives majority of new client pipeline</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>One or more award-winning campaigns in the portfolio</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Clients expanding retainers without renegotiation</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Marketwake frameworks referenced externally by clients</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Leadership team with visible national presence in discipline</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>AI tools built for internal use generating client value</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Revenue reaches $40M&ndash;$50M with strong margin</div></div>
+          <div class="ms-item"><div class="ms-check"></div><div>Marketwake is selective by standards, not just capacity</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM MILESTONES -->
+<section id="team-milestones" style="background:var(--off)">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">Team-level milestones</div>
+      <h2 class="sec-title">What each team owns.<br>How every person knows<br>they are <em>contributing.</em></h2>
+      <p class="sec-body">Company milestones tell you if Marketwake is on track. Team milestones tell each person how their specific work connects to that progress. These are the conversations to have in each team.</p>
+    </div>
+
+    <div class="team-ms-wrap fi">
+      <div class="tms-row header">
+        <div class="tms-cell">Team</div>
+        <div class="tms-cell">Phase 1 milestone (2027)</div>
+        <div class="tms-cell">Phase 2 milestone (2029)</div>
+        <div class="tms-cell">Phase 3 milestone (2031)</div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Strategy / AMs</div><div class="tms-role">Sammy &middot; Amber</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>90-day growth roadmap</strong> live for every client. AM role definition documented. Offering Lead handoff model working.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Clients expand retainers</strong> based on AM growth recommendations. Strategy frameworks referenced in client board decks.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Marketwake strategic influence</strong> shapes client business decisions beyond marketing. AMs are growth architects, not account managers.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Media Teams</div><div class="tms-role">Garrett &middot; Social &middot; Performance</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Social and Performance</strong> operating as one integrated creative-performance system. Social Lead and Paid Director identified or hired.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Offering Leads running</strong> Social Growth and Performance Marketing independently. Garrett coaching not executing.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Media work wins recognition.</strong> Case studies show measurable revenue attribution. Teams innovating without leadership prompting.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Creative</div><div class="tms-role">Mapi &middot; Kristen</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Creative briefs standardized</strong> via AI templates. Scope exit process agreed. At least one portfolio-worthy project in progress.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Creative standard enforced</strong> across all offering teams. Creative systems running without Mapi or Kristen in every decision.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Award-winning work</strong> in portfolio. Clients choosing Marketwake for creative reputation. Cannes-caliber ambition being pursued.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">SEO / Content</div><div class="tms-role">Josh</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>AI-assisted SEO audits</strong> and content briefs live. Josh&apos;s AI search thesis published and distributed externally.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Organic Authority offering</strong> is a named, credible Marketwake capability. Josh&apos;s frameworks referenced in industry conversations.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Marketwake is the go-to agency</strong> for AI-era search strategy. Josh&apos;s research cited by other practitioners.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Development</div><div class="tms-role">Ruben</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Component library and framework</strong> built. 20% of dev capacity protected for tooling. Ruben&ndash;Megan automation mandate started.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Web Growth offering</strong> has documented standards and reusable systems. Dev team builds from frameworks, not from scratch.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Internal automation layer</strong> enables every offering team. Dev is the technical backbone of Marketwake&apos;s competitive advantage.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Operations</div><div class="tms-role">Megan</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Ops infrastructure complete:</strong> automated intake, SOW, billing, capacity dashboard. Zero manual proposal creation.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Ops systems run proactively</strong> not reactively. Megan is building ahead of need, not filling gaps after they appear.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>CEO is focused on growth</strong> not operations. Ops infrastructure is invisible because it works. Megan owns strategy of the function.</div></div>
+      </div>
+      <div class="tms-row">
+        <div class="tms-cell"><div class="tms-team">Social Intelligence</div><div class="tms-role">Sydney</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Social Growth offering launched</strong> with specialist roles defined. Next hire is a specialist, not a generalist SMM.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Audience intelligence function</strong> producing cross-team insights. Sydney&apos;s signals feeding paid creative strategy formally.</div></div>
+        <div class="tms-cell"><div class="tms-item"><strong>Social signals are agency intelligence,</strong> not just a channel report. Sydney&apos;s function shapes other teams&apos; strategies.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS SIGNALS -->
+<section id="signals">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">How the whole company knows it is working</div>
+      <h2 class="sec-title">Success signals.<br>Not just for leadership.<br>For <em>everyone.</em></h2>
+      <p class="sec-body">These are the signals your own team named in their vision responses as the proof that Marketwake is operating at the level it wants to reach. They are organized by type so every person can see which signals are theirs to watch.</p>
+    </div>
+
+    <div style="margin-top:32px" class="fi">
+      <div class="sec-eyebrow" style="margin-bottom:10px">Commercial signals &mdash; visible company-wide</div>
+      <div class="signal-row-wrap">
+        <div class="sr"><div class="sr-text"><strong>Clients expand retainers without being asked.</strong> They see the value and invest more before we propose it.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Inbound referrals reference our thought leadership, frameworks, or reputation</strong> &mdash; not just a recommendation from someone they know.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>New clients arrive already aligned with the ICP.</strong> We are not onboarding mismatched clients and exiting them six months later.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Revenue is predictable.</strong> We can forecast three months out with confidence because retainer stability is high.</div><span class="sr-badge badge-lag">Lagging</span></div>
+        <div class="sr"><div class="sr-text"><strong>Average retainer value grows year over year.</strong> We are doing more meaningful work for fewer, better clients &mdash; not more work for more clients.</div><span class="sr-badge badge-lag">Lagging</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px" class="fi">
+      <div class="sec-eyebrow" style="margin-bottom:10px">Delivery signals &mdash; visible to every team</div>
+      <div class="signal-row-wrap">
+        <div class="sr"><div class="sr-text"><strong>Offering teams run delivery without leadership intervention.</strong> Escalations go to Offering Leads, not to Brooke or VP level.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Creative briefs arrive with full context</strong> and are reliable every time. Not just when a specific person writes them.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Scope creep is caught and addressed before clients feel it.</strong> The conversation happens because the system flags it, not because someone is brave enough to raise it.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Marketwake strategies influence product launches and business decisions</strong> &mdash; not just marketing execution. Clients rely on us for major growth decisions.</div><span class="sr-badge badge-lead">Leading</span></div>
+        <div class="sr"><div class="sr-text"><strong>Reports include insights, not just data.</strong> Every client-facing performance update includes a clear narrative and recommended next step.</div><span class="sr-badge badge-lag">Lagging</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px" class="fi">
+      <div class="sec-eyebrow" style="margin-bottom:10px">Culture signals &mdash; felt by every person</div>
+      <div class="signal-row-wrap">
+        <div class="sr"><div class="sr-text"><strong>Team retention is high.</strong> Specialists choose Marketwake because it is the best place to grow their craft &mdash; not just because they have not left yet.</div><span class="sr-badge badge-culture">Culture</span></div>
+        <div class="sr"><div class="sr-text"><strong>The work is in portfolios.</strong> People are proud to show what they built here. The quality is the kind they wanted to make.</div><span class="sr-badge badge-culture">Culture</span></div>
+        <div class="sr"><div class="sr-text"><strong>There is no burnt-out sentiment.</strong> Workloads are structured, scopes are clean, and the work is energizing rather than draining.</div><span class="sr-badge badge-culture">Culture</span></div>
+        <div class="sr"><div class="sr-text"><strong>We feel in control of growth, not chasing it.</strong> The clearest signal of all &mdash; described by Sammy but felt by the whole team.</div><span class="sr-badge badge-culture">Culture</span></div>
+        <div class="sr"><div class="sr-text"><strong>Top talent comes to us.</strong> We are not recruiting &mdash; we are selecting. Marketwake is known as where specialists come to do the best work of their career.</div><span class="sr-badge badge-culture">Culture</span></div>
+      </div>
+    </div>
+
+    <div class="closing fi">
+      <div class="closing-title">"The risk is not ambition. The risk is that without shared organizational decisions made at the top, each team continues building toward its own version of the future."</div>
+      <div class="closing-body">
+        The vision is aligned. Every quadrant, every profile, every vision response points in the same direction. <strong>The only variable is whether the org makes the structural decisions that let the team get there together.</strong><br><br>
+        The five moves are clear. The phases are sequenced. The milestones are measurable. The signals are named by the team themselves. <strong>What follows is not a planning exercise. It is a series of decisions.</strong> Each one unlocks the next. The first decisions are available today.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<script>
+function go(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+
+<div class="divider"></div>
+
+<section id="bd" style="padding:80px 0">
+  <div class="container">
+
+    <div>
+      <div class="sec-eyebrow">The business development engine</div>
+      <h2 class="sec-title">Revenue architecture.<br>Dream accounts.<br><em>Selectivity drives growth.</em></h2>
+      <p class="sec-body" style="margin-bottom:48px">Move 4 names BD as a prerequisite for $50M. This section builds it out. The client tiers, target accounts, pipeline math, and operating rhythm that turn the strategy into a system.</p>
+    </div>
+
+    <div style="margin-bottom:48px">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px">Revenue model at each stage</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+        <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;opacity:0.6">
+          <div style="background:var(--off);padding:16px 20px;border-bottom:1px solid var(--border)">
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Today</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--ink);line-height:1">$10M</div>
+          </div>
+          <div style="padding:16px 20px">
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--muted)">~8 larger clients</span><span style="font-weight:500;color:var(--ink)">~$300-500k</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--muted)">~20 mid clients</span><span style="font-weight:500;color:var(--ink)">~$150-250k</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0"><span style="color:var(--muted)">Projects / misc</span><span style="font-weight:500;color:var(--ink)">variable</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:11px;color:var(--muted);font-style:italic;line-height:1.6">Founder-driven sales. Opportunistic pipeline. Many small engagements.</div>
+          </div>
+        </div>
+
+        <div style="border:2px solid var(--orange);border-radius:14px;overflow:hidden">
+          <div style="background:var(--orange-tint);padding:16px 20px;border-bottom:1px solid var(--border)">
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">Target - 2028-2029</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--orange);line-height:1">$50M</div>
+          </div>
+          <div style="padding:16px 20px">
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;border-bottom:1px solid var(--border);align-items:center"><span style="color:var(--muted)">Flagship clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$1M+</span><span style="color:var(--orange);font-weight:500;text-align:right">x10</span></div>
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;border-bottom:1px solid var(--border);align-items:center"><span style="color:var(--muted)">Strategic clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$500k</span><span style="color:var(--orange);font-weight:500;text-align:right">x20</span></div>
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;border-bottom:1px solid var(--border);align-items:center"><span style="color:var(--muted)">Core clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$250k</span><span style="color:var(--orange);font-weight:500;text-align:right">x40</span></div>
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;align-items:center"><span style="color:var(--muted)">Projects / misc</span><span style="font-weight:500;color:var(--ink);text-align:right">variable</span><span style="color:var(--muted);text-align:right">-</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:11px;color:var(--orange);font-weight:500;line-height:1.6">Business defined by ~30 strategic relationships.</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;opacity:0.7">
+          <div style="background:var(--off);padding:16px 20px;border-bottom:1px solid var(--border)">
+            <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Horizon - 2031+</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--ink);line-height:1">$100M</div>
+          </div>
+          <div style="padding:16px 20px">
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;border-bottom:1px solid var(--border);align-items:center"><span style="color:var(--muted)">Flagship clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$2M+</span><span style="font-weight:500;color:var(--ink);text-align:right">x15</span></div>
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;border-bottom:1px solid var(--border);align-items:center"><span style="color:var(--muted)">Strategic clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$1M</span><span style="font-weight:500;color:var(--ink);text-align:right">x30</span></div>
+              <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;font-size:11px;padding:7px 0;align-items:center"><span style="color:var(--muted)">Core clients</span><span style="font-weight:500;color:var(--ink);text-align:right">$500k</span><span style="font-weight:500;color:var(--ink);text-align:right">x40</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:11px;color:var(--muted);font-style:italic;line-height:1.6">Defined by ~45 major strategic clients.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="background:var(--ink);border-radius:16px;padding:32px 40px;margin-bottom:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px">The pipeline math</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:26px;color:white;line-height:1.25;margin-bottom:14px">A healthy pipeline is <em style="color:var(--orange)">3-4x your revenue target.</em></h3>
+        <p style="font-size:13px;color:rgba(245,241,234,0.6);line-height:1.75">To generate $10M in new revenue, Marketwake needs $30M-$40M in active pipeline across all stages. This is not ambition. It is the math required to hit the number.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;align-items:center">
+          <div><div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">New revenue goal</div><div style="font-size:14px;font-weight:500;color:white">$10M annually</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">Year 1</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;align-items:center">
+          <div><div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">Required pipeline</div><div style="font-size:14px;font-weight:500;color:white">$30M-$40M active</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">3-4x</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:14px 18px">
+          <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">To close $10M, you need</div>
+          <div style="display:flex;gap:20px">
+            <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">12</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">$500k deals</div></div>
+            <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">or 6</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">$1M deals</div></div>
+            <div style="text-align:center"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">or mix</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">of both</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:48px">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">ICP segment map</div>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1.2;margin-bottom:20px">Where Marketwake creates the most value</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div style="background:var(--orange-tint);border:1px solid rgba(163,45,45,0.2);border-radius:12px;padding:20px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">Tier 1 - Primary focus</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Premium DTC / Ecommerce</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Consumer Wellness and Health</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Subscription Platforms</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Venture-backed Consumer Brands</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Heavy creative + paid acquisition. $10M-$200M revenue. Where Marketwake wins most often.</div>
+        </div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Tier 2 - Strategic targets</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Consumer Technology Platforms</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Digital Health</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Emerging Consumer Brands</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Strong ICP fit. Growing marketing complexity. Future flagship account potential.</div>
+        </div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Tier 3 - Selective only</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">B2B SaaS (selective)</div>
+            <div style="font-size:12px;font-weight:500;color:var(--ink)">Niche service industries</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6">Only when exceptional ICP alignment exists. Never as volume strategy. The current model over-indexes here.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:48px">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Dream 25 target accounts</div>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1.2;margin-bottom:8px">The 25 companies most likely to become <em>$500k-$1M+ partnerships</em></h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;max-width:600px">Scored on marketing spend potential, creative dependency, growth signals, and agency likelihood. Each needs 3-5 mapped relationships: CMO, VP Marketing, Head of Growth, investor, founder.</p>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px">
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">AG1</div><div style="font-size:10px;color:var(--muted)">Wellness - 19/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Liquid Death</div><div style="font-size:10px;color:var(--muted)">Beverage - 19/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Hims and Hers</div><div style="font-size:10px;color:var(--muted)">Digital Health - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Ro</div><div style="font-size:10px;color:var(--muted)">Digital Health - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Eight Sleep</div><div style="font-size:10px;color:var(--muted)">Sleep Tech - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Vuori</div><div style="font-size:10px;color:var(--muted)">Apparel - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Olipop</div><div style="font-size:10px;color:var(--muted)">Beverage - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Poppi</div><div style="font-size:10px;color:var(--muted)">Beverage - 18/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Oura</div><div style="font-size:10px;color:var(--muted)">Wearable Tech - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Whoop</div><div style="font-size:10px;color:var(--muted)">Fitness Tech - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Our Place</div><div style="font-size:10px;color:var(--muted)">DTC - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Caraway</div><div style="font-size:10px;color:var(--muted)">DTC Kitchen - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Athletic Brewing</div><div style="font-size:10px;color:var(--muted)">Beverage - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Ritual</div><div style="font-size:10px;color:var(--muted)">Supplements - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Seed Health</div><div style="font-size:10px;color:var(--muted)">Health - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">MasterClass</div><div style="font-size:10px;color:var(--muted)">Subscription - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Noom</div><div style="font-size:10px;color:var(--muted)">Digital Health - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Magic Spoon</div><div style="font-size:10px;color:var(--muted)">DTC Food - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Momentous</div><div style="font-size:10px;color:var(--muted)">Supplements - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Levels Health</div><div style="font-size:10px;color:var(--muted)">Health Tech - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Function Health</div><div style="font-size:10px;color:var(--muted)">Health Tech - 17/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Calm</div><div style="font-size:10px;color:var(--muted)">Mental Wellness - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Headspace</div><div style="font-size:10px;color:var(--muted)">Mental Wellness - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Beam</div><div style="font-size:10px;color:var(--muted)">Wellness - 16/20</div></div>
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px">Sakara Life</div><div style="font-size:10px;color:var(--muted)">Wellness - 16/20</div></div>
+      </div>
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:18px 22px;font-size:12px;color:var(--muted);line-height:1.7"><strong style="color:var(--ink)">How to use this list:</strong> BD time allocation: Dream 25 = 50% of time, Strategic 25 = 30%, remaining = 20%. Signals that move an account to active: new funding, CMO hire, product launch, marketing hiring surge. Expected outcome if pursued consistently: 10-15 discovery conversations/yr, 4-6 new clients, avg $300k-$700k deal size.</div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">BD operating rhythm</div>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1.2;margin-bottom:20px">The weekly cadence that builds <em>compounding pipeline</em></h3>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px"><div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Monday</div><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:5px">Strategy + Pipeline</div><div style="font-size:11px;color:var(--muted);line-height:1.6">Review active opps. Identify 2-3 Dream accounts to advance. Plan outreach.</div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px"><div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Tuesday</div><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:5px">Strategic Outreach</div><div style="font-size:11px;color:var(--muted);line-height:1.6">5-10 thoughtful outreach messages to CMOs, Growth Heads, founders. Lead with insight.</div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px"><div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Wednesday</div><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:5px">Relationship Dev</div><div style="font-size:11px;color:var(--muted);line-height:1.6">Follow-ups. Share insights. Make introductions. 2-3 meaningful conversations.</div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px"><div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Thursday</div><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:5px">Discovery Calls</div><div style="font-size:11px;color:var(--muted);line-height:1.6">Diagnose growth constraints. CAC pressure, creative fatigue, channel coordination. 1-2 calls.</div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px"><div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">Friday</div><div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:5px">Ecosystem Building</div><div style="font-size:11px;color:var(--muted);line-height:1.6">VC partner touchpoints. Founder networks. Marketing operator communities.</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;padding:20px">
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:12px">Monthly targets</div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--muted)">New executive relationships</span><span style="font-weight:500;color:var(--ink)">20-30</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--muted)">Discovery conversations</span><span style="font-weight:500;color:var(--ink)">4-8</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--border)"><span style="color:var(--muted)">Qualified opportunities</span><span style="font-weight:500;color:var(--ink)">2-4</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0"><span style="color:var(--muted)">Ecosystem relationships</span><span style="font-weight:500;color:var(--ink)">3-5</span></div>
+          </div>
+        </div>
+        <div style="background:var(--ink);border-radius:12px;padding:20px">
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:12px">The principle</div>
+          <p style="font-size:14px;font-family:'DM Serif Display',serif;font-style:italic;color:white;line-height:1.7;margin-bottom:8px">"Selectivity drives growth. Winning a small number of large strategic partnerships creates far more value than pursuing a large number of small opportunities."</p>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4)">The most important cultural shift required to reach $50M.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+<section id="vision" style="background:var(--off)">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">06 &mdash; Values</div>
+      <h2 class="sec-title">A growth agency.<br>Strategy, creative, and<br>performance as <em>one system.</em></h2>
+      <p class="sec-body">Not an agency that sells channels. Not a consultancy that avoids execution. Not a production shop that avoids strategy. Something the market has been asking for and has not been able to find.</p>
+    </div>
+
+    <div class="vision-card fi">
+      <div class="vision-text">
+        Marketwake is a <strong>growth agency built differently</strong> &mdash; not because we say so, but because of how we are organized. We design the strategies, creative, and systems that help ambitious consumer brands grow with intention. We work as one integrated team, organized around outcomes rather than channels, where <strong>every team owns a result</strong> rather than a deliverable. We do not compete on availability or effort. We compete on <strong>intelligence, craft, and the compounding advantage</strong> of a team that builds better every time it works. Every client who encounters us feels the same thing: they are working with people who think harder, build smarter, and care more about the outcome than the output. <strong>That is not a promise we make. It is a standard we enforce &mdash; structurally, culturally, and in every piece of work that leaves this building.</strong>
+      </div>
+      <div class="vision-pillars">
+        <div class="vp"><div class="vp-num">One standard</div><div class="vp-title">One House</div><div class="vp-body">Every client, every offering, every touchpoint. No exceptions.</div></div>
+        <div class="vp"><div class="vp-num">Every role</div><div class="vp-title">Architects</div><div class="vp-body">Designing systems that scale without heroic effort.</div></div>
+        <div class="vp"><div class="vp-num">Every function</div><div class="vp-title">AI-enabled</div><div class="vp-body">Not a specialty. A baseline expectation.</div></div>
+        <div class="vp"><div class="vp-num">Every outcome</div><div class="vp-title">Owned</div><div class="vp-body">Eight teams, eight results. No handoffs. No gaps.</div></div>
+        <div class="vp"><div class="vp-num">Every client</div><div class="vp-title">White glove</div><div class="vp-body">Seamless, strategic, expert. Every time.</div></div>
+      </div>
+    </div>
+
+    <div class="sec-eyebrow fi" style="margin-top:56px">Our values</div>
+    <h3 class="sec-title fi" style="font-size:clamp(22px,2.8vw,34px);margin-bottom:16px">Why the values<br>need to <em>evolve</em></h3>
+
+    <div class="fi" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px;align-items:start">
+      <div>
+        <p class="sec-body" style="margin-bottom:20px">Our current values — Gritty, Pursuers of Excellence, Solution Seekers, Team Minded, Honest — were written for a different version of this company. They describe what it takes to survive and grind at $5M. They are about effort, attitude, and getting through hard things together. And they worked. They helped us build something real.</p>
+        <p class="sec-body">But they were written for a smaller firm that competes on hustle. They don't describe how a $50M agency thinks, builds, or wins. Willpower and grit are not a competitive advantage at scale — systems, craft, and compounding intelligence are. The team already knows this. It showed up everywhere in the vision exercise.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px">
+        <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">What the team described, unprompted</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:12px;color:var(--ink);line-height:1.6;padding-left:12px;border-left:2px solid #E85D26">"Radical ownership of revenue impact. Data before opinion. Strategic thinking over platform expertise." <span style="color:var(--muted)">— Sammy</span></div>
+          <div style="font-size:12px;color:var(--ink);line-height:1.6;padding-left:12px;border-left:2px solid #534AB7">"Strategic curiosity. Ownership mentality. Relentless experimentation. Excellence = strategic clarity + creative bravery + measurable growth." <span style="color:var(--muted)">— Sammy</span></div>
+          <div style="font-size:12px;color:var(--ink);line-height:1.6;padding-left:12px;border-left:2px solid #0F6E56">"No emotional reactivity. No victim language. Proactive strategy, not reactive reporting. A culture of direct feedback." <span style="color:var(--muted)">— Amber</span></div>
+          <div style="font-size:12px;color:var(--ink);line-height:1.6;padding-left:12px;border-left:2px solid #993556">"Taste. Simplicity. Strategic clarity. No wasted work. Creative that converts." <span style="color:var(--muted)">— Garrett</span></div>
+          <div style="font-size:12px;color:var(--ink);line-height:1.6;padding-left:12px;border-left:2px solid #185FA5">"Solve problems once, not repeatedly. If it happens more than a few times, automate it." <span style="color:var(--muted)">— Ruben</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fi" style="background:var(--ink);border-radius:14px;padding:28px 32px;margin-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--orange);margin-bottom:12px">Current values — what they were built for</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:rgba(245,241,234,0.9)">Gritty</span><span style="font-size:11px;color:rgba(245,241,234,0.4)">→ pushes through hard things</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:rgba(245,241,234,0.9)">Pursuers of Excellence</span><span style="font-size:11px;color:rgba(245,241,234,0.4)">→ high standards of effort</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:rgba(245,241,234,0.9)">Solution Seekers</span><span style="font-size:11px;color:rgba(245,241,234,0.4)">→ figures it out</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:rgba(245,241,234,0.9)">Team Minded</span><span style="font-size:11px;color:rgba(245,241,234,0.4)">→ collaborative, no silos</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:rgba(245,241,234,0.9)">Honest</span><span style="font-size:11px;color:rgba(245,241,234,0.4)">→ direct, no politics</span></div>
+        </div>
+        <div style="margin-top:16px;font-size:12px;color:rgba(245,241,234,0.45);line-height:1.6;font-style:italic">Good values for a scrappy, hard-working agency that earns trust through effort. They got us here.</div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#534AB7;margin-bottom:12px">Where they fall short at $50M</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:12px;color:rgba(245,241,234,0.75);line-height:1.6;padding-left:12px;border-left:2px solid rgba(245,241,234,0.15)"><strong style="color:rgba(245,241,234,0.9)">Gritty</strong> rewards effort over outcomes. At scale we need people building smarter, not just harder.</div>
+          <div style="font-size:12px;color:rgba(245,241,234,0.75);line-height:1.6;padding-left:12px;border-left:2px solid rgba(245,241,234,0.15)"><strong style="color:rgba(245,241,234,0.9)">Pursuers of Excellence</strong> is aspirational but vague. It doesn't describe what excellence looks like or how it gets measured.</div>
+          <div style="font-size:12px;color:rgba(245,241,234,0.75);line-height:1.6;padding-left:12px;border-left:2px solid rgba(245,241,234,0.15)"><strong style="color:rgba(245,241,234,0.9)">Solution Seekers</strong> is reactive. The future Marketwake builds before the problem exists, not after.</div>
+          <div style="font-size:12px;color:rgba(245,241,234,0.75);line-height:1.6;padding-left:12px;border-left:2px solid rgba(245,241,234,0.15)"><strong style="color:rgba(245,241,234,0.9)">Team Minded</strong> is table stakes. Every agency says it. We need a value that describes how we build — not just that we do it together.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sec-title fi" style="font-size:clamp(22px,2.8vw,34px);margin-bottom:8px">Five values built for<br>a <em>$50M agency</em></h3>
+    <p class="sec-body fi" style="margin-bottom:28px">These are not motivational. They are operational. Each one describes how decisions get made, how work gets judged, and what behavior is rewarded. At scale, the test of a value is simple: can you look at a specific decision and say whether it was consistent or not?</p>
+
+    <div class="fi" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:#E85D26"></div>
+        <div style="padding:18px 16px 14px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#E85D26;margin-bottom:8px">01</div>
+          <div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.2">Outcome obsessed</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">We measure ourselves by what moved, not what we made. Every team owns a result &mdash; not a deliverable, not a channel, not an activity.</div>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);background:var(--white)">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">The test</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">"Would we be proud of this if the client's revenue didn't move?"</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">Replaces: Pursuers of Excellence</div>
+        </div>
+      </div>
+
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:#534AB7"></div>
+        <div style="padding:18px 16px 14px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#534AB7;margin-bottom:8px">02</div>
+          <div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.2">Innovative by nature</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">We adopt tools before we are required to. We build ahead of the problem. We are not waiting for permission or proof &mdash; we are already building what comes next.</div>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);background:var(--white)">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">The test</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">"Are we using AI and new thinking before our clients ask us to?"</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">Replaces: Solution Seekers</div>
+        </div>
+      </div>
+
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:#0F6E56"></div>
+        <div style="padding:18px 16px 14px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#0F6E56;margin-bottom:8px">03</div>
+          <div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.2">Architects of growth</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">We design systems that outlast the engagement. Frameworks, not one-offs. Standards that scale. We build the infrastructure that makes excellent work repeatable.</div>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);background:var(--white)">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">The test</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">"Are we solving this once and building the system, or solving it again?"</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">Replaces: Team Minded</div>
+        </div>
+      </div>
+
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:#993556"></div>
+        <div style="padding:18px 16px 14px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#993556;margin-bottom:8px">04</div>
+          <div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.2">Creative courage</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">We make brave work, not safe work. We challenge the brief, push the creative, and advocate for the bolder idea &mdash; even when the easier answer is available.</div>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);background:var(--white)">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">The test</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">"Did we push this, or ship what was easiest to defend?"</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">Replaces: Gritty</div>
+        </div>
+      </div>
+
+      <div style="background:var(--off);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:#185FA5"></div>
+        <div style="padding:18px 16px 14px">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:#185FA5;margin-bottom:8px">05</div>
+          <div style="font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.2">Honest always</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.65">With clients, with each other, about the work. We name what is not working before it becomes a crisis. Direct, clear, and without ego.</div>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);background:var(--white)">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">The test</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">"Did we say the hard thing, or avoid it because it was easier?"</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">Carries forward from today</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="competition">
+  <div class="container">
+    <div class="fi">
+      <div class="sec-eyebrow">07 &mdash; Competition</div>
+      <h2 class="sec-title">Why Marketwake wins<br>if it follows <em>this trajectory.</em></h2>
+      <p class="sec-body">Four well-resourced competitors. Each has a real strength. Each has a structural limitation that Marketwake is specifically designed to not have. The window to differentiate is open right now &mdash; before they close it.</p>
+    </div>
+
+    <div class="callout-grid four fi" style="margin-top:32px">
+      <div class="c-card" style="--cc:#534AB7">
+        <div class="c-card-label">Wpromote</div>
+        <div class="c-card-title">$500M&ndash;$1B revenue &middot; 500&ndash;1,000 employees</div>
+        <div class="c-card-body">Ad Age&apos;s 2025 Performance Marketing Agency of the Year. Just acquired Giant Spoon to bolt on creative capability. Proprietary Polaris AI platform. Strong enterprise client base. <strong>Challenger culture, data-driven foundation.</strong></div>
+      </div>
+      <div class="c-card" style="--cc:#A32D2D">
+        <div class="c-card-label">Tinuiti</div>
+        <div class="c-card-title">$235M revenue &middot; 1,200+ employees</div>
+        <div class="c-card-body">Largest independent full-funnel agency in the US. $4B in digital media under management. Proprietary Bliss Point measurement platform. Premier partner status on every major platform. <strong>Scale, reach, and measurement depth.</strong></div>
+      </div>
+      <div class="c-card" style="--cc:#854F0B">
+        <div class="c-card-label">Hawke Media</div>
+        <div class="c-card-title">Inc. 5000 &middot; 4,700+ brands served</div>
+        <div class="c-card-body">Outsourced CMO model. Month-to-month contracts. A-la-carte services. Hawke AI platform processing data from 7,000+ brands. <strong>Volume, flexibility, and accessibility as core differentiators.</strong></div>
+      </div>
+      <div class="c-card" style="--cc:#185FA5">
+        <div class="c-card-label">Huge Inc.</div>
+        <div class="c-card-title">$408M revenue &middot; 1,000&ndash;5,000 employees</div>
+        <div class="c-card-body">Design and technology company. Acquired by AEA Investors (Dec 2024), merged with Hero Digital. 62% of clients now on AI/GenAI projects. <strong>Experience design and AI-driven digital products for enterprise.</strong></div>
+      </div>
+    </div>
+
+    <div class="sec-eyebrow fi" style="margin-top:48px">The comparison</div>
+    <h3 class="sec-title fi" style="font-size:clamp(22px,2.8vw,34px);margin-bottom:20px">Where Marketwake wins &mdash; <em>and why</em></h3>
+
+    <div class="comp-wrap fi">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:160px">Dimension</th>
+            <th class="mw">Marketwake</th>
+            <th>Wpromote</th>
+            <th>Tinuiti</th>
+            <th>Hawke Media</th>
+            <th>Huge Inc.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="comp-row-label">Size &amp; scale</span></td>
+            <td class="mw">~50 people, $10M<br><span class="comp-chip chip-neutral">Intentionally boutique</span></td>
+            <td>500&ndash;1,000 people<br><span class="comp-chip chip-neutral">Enterprise scale</span></td>
+            <td>1,200+ people<br><span class="comp-chip chip-neutral">Largest independent</span></td>
+            <td>~165 people<br><span class="comp-chip chip-neutral">High volume model</span></td>
+            <td>1,000&ndash;5,000 people<br><span class="comp-chip chip-neutral">Global enterprise</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">Client access &amp; attention</span></td>
+            <td class="mw"><span class="win">Senior team on every account. No account rotation. AM is a growth architect.</span><br><span class="comp-chip chip-win">Structural advantage</span></td>
+            <td>Enterprise clients get senior teams. Mid-market gets managed service layers.<br><span class="comp-chip chip-neutral">Tiered access</span></td>
+            <td>Large teams per client, strong processes, but scale creates distance from senior leadership.<br><span class="comp-chip chip-neutral">Process-driven</span></td>
+            <td>Month-to-month, a-la-carte. Low barrier. Breadth over depth.<br><span class="comp-chip chip-lose">Limited strategic depth</span></td>
+            <td>Enterprise focus, long engagements, design-led. Senior access on flagship accounts only.<br><span class="comp-chip chip-neutral">Project-based</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">Creative + performance integration</span></td>
+            <td class="mw"><span class="win">Structurally enforced through outcome offering teams. One team owns both.</span><br><span class="comp-chip chip-win">Built-in</span></td>
+            <td>Acquisition of Giant Spoon attempts this. Still integrating. Two cultures, two teams.<br><span class="comp-chip chip-lose">Bolted on via M&amp;A</span></td>
+            <td>Creative team exists but historically performance-first. Creative is a support function.<br><span class="comp-chip chip-lose">Performance primary</span></td>
+            <td>A-la-carte means creative and performance are often separate engagements.<br><span class="comp-chip chip-lose">Siloed by design</span></td>
+            <td>Design and experience-led, not performance-led. Creative without performance context.<br><span class="comp-chip chip-neutral">Creative primary</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">AI integration</span></td>
+            <td class="mw"><span class="win">AI in every function as a baseline standard. Outcome 08 dedicated to AI &amp; intelligence tools.</span><br><span class="comp-chip chip-win">Company-wide mandate</span></td>
+            <td>Polaris IQ platform, Meta Creative Accelerator. Strong proprietary tech investment.<br><span class="comp-chip chip-neutral">Platform-driven</span></td>
+            <td>Bliss Point measurement, AdCopy AI launched 2025. Measurement-focused AI.<br><span class="comp-chip chip-neutral">Measurement-focused</span></td>
+            <td>Hawke AI processes 7,000+ brand data. Benchmarking tool. Surface-level AI application.<br><span class="comp-chip chip-lose">Data benchmarking only</span></td>
+            <td>62% of clients on AI/GenAI projects. Most AI-native in the group. Enterprise experience design.<br><span class="comp-chip chip-win">AI-first positioning</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">Outcome-based model</span></td>
+            <td class="mw"><span class="win">Eight offering teams each owning a measurable outcome. Structure enforces accountability.</span><br><span class="comp-chip chip-win">Organizational design</span></td>
+            <td>Full-funnel approach and outcomes language. Still organized by channel internally.<br><span class="comp-chip chip-neutral">Language without structure</span></td>
+            <td>Strong measurement and "Love Growth, Hate Waste" philosophy. Channel-team structure internally.<br><span class="comp-chip chip-neutral">Measurement-led</span></td>
+            <td>A-la-carte by definition. Clients buy channels, not outcomes. CMO advisory layer helps.<br><span class="comp-chip chip-lose">Channel-centric</span></td>
+            <td>Project-based experience outcomes. Not a growth agency model.<br><span class="comp-chip chip-neutral">Experience outcomes</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">Speed and agility</span></td>
+            <td class="mw"><span class="win">50 people. One decision-maker. Structural changes happen in months, not years.</span><br><span class="comp-chip chip-win">Built-in advantage</span></td>
+            <td>Independent but 500+ people. Structural changes require org-wide alignment.<br><span class="comp-chip chip-neutral">Moderate agility</span></td>
+            <td>1,200+ people. Deliberate and process-driven. Enterprise pace.<br><span class="comp-chip chip-lose">Process-constrained</span></td>
+            <td>Small team, month-to-month model. Fast to start, shallow to scale.<br><span class="comp-chip chip-neutral">Fast but shallow</span></td>
+            <td>PE-backed and consolidating. Strategy in flux post-acquisition. Leadership transition 2026.<br><span class="comp-chip chip-lose">Structural uncertainty</span></td>
+          </tr>
+          <tr>
+            <td><span class="comp-row-label">White glove delivery</span></td>
+            <td class="mw"><span class="win">Every client feels the same seamless, strategic, expert standard. Structure makes it consistent.</span><br><span class="comp-chip chip-win">The target</span></td>
+            <td>Strong account teams for enterprise. Mid-market quality varies by team.<br><span class="comp-chip chip-neutral">Tier-dependent</span></td>
+            <td>Process-driven quality. Consistent but not white glove. Volume model.<br><span class="comp-chip chip-neutral">Consistent, not premium</span></td>
+            <td>Accessibility over premium. Month-to-month keeps both agency and client one step from exit.<br><span class="comp-chip chip-lose">Volume over premium</span></td>
+            <td>High-end for flagship enterprise clients. Not a model built for growth agencies.<br><span class="comp-chip chip-neutral">Enterprise premium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stat-band fi" style="margin-top:40px">
+      <div class="sb-inner">
+        <div><div class="sb-stat" style="font-size:52px;line-height:1">THE<br>WINDOW<br>IS NOW.</div></div>
+        <div>
+          <div class="sb-quote">Wpromote just bolted on creative via acquisition. Tinuiti is managing 1,200 people across 16 offices. Hawke is built for volume, not depth. Huge is in a post-acquisition leadership transition. None of them can do what Marketwake can do at 50 people &mdash; make a structural decision today and be operating differently in 90 days. The window to build the offering model, install the AI infrastructure, and establish the thought leadership engine is open right now. It will not stay open forever.</div>
+          <div class="sb-attr" style="margin-top:12px">Competitive Analysis &middot; Marketwake Strategy &middot; 2026</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>

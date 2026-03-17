@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketwake — One House · Team Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0E0D;--white:#FFFFFF;--off:#F8F7F5;--warm:#F2EFE9;
+  --orange:#E8267A;--orange-tint:#FDE8F3;
+  --muted:#807870;--border:rgba(14,14,13,0.09);--border-mid:rgba(14,14,13,0.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--ink)}
+.nav-links{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end;padding-left:24px}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-btn{font-size:11px;font-weight:500;color:var(--muted);padding:4px 10px;border-radius:4px;cursor:pointer;border:none;background:none;white-space:nowrap;transition:color 0.15s}
+.nav-btn:hover{color:var(--ink);background:var(--off)}
+
+/* PAGES */
+.page{display:none;padding-top:52px;min-height:100vh}
+.page.active{display:block}
+.container{max-width:1080px;margin:0 auto;padding:0 44px}
+
+/* OVERVIEW HERO */
+.ov-hero{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+.ov-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.ov-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,108px);line-height:0.9;letter-spacing:0.01em;margin-bottom:22px}
+.ov-title em{color:var(--orange);font-style:normal}
+.ov-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:0}
+
+/* ARCHETYPE GRID */
+.arch-section{padding:64px 0}
+.arch-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.arch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.arch-card{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.arch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ac,var(--orange))}
+.arch-card:hover{border-color:var(--ac,var(--orange));transform:translateY(-2px)}
+.arch-card.gap-card{border:2px dashed var(--border-mid);background:var(--warm)}
+.ac-name{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:6px;color:var(--ac,var(--orange))}
+.ac-def{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.ac-people{display:flex;flex-wrap:wrap;gap:6px}
+.ac-chip{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;cursor:pointer;transition:all 0.15s;border:1px solid}
+
+/* GAP CALLOUT */
+.gap-callout{background:#F0EDE6;border:1px solid rgba(14,14,13,0.12);border-radius:16px;padding:36px;margin-top:0}
+.gc-inner{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.gc-left{}
+.gc-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.gc-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--ink);line-height:0.95}
+.gc-body{font-size:14px;color:var(--muted);line-height:1.75}
+.gc-body strong{color:var(--ink);font-weight:500}
+
+/* ── PERSON PAGE ── */
+.person-hero{padding:60px 0 48px;border-bottom:1px solid var(--border)}
+.ph-top{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start}
+.ph-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px}
+.ph-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);line-height:0.92;letter-spacing:0.01em;margin-bottom:8px}
+.ph-role{font-size:15px;color:var(--muted);margin-bottom:16px}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;margin-bottom:18px;border:1px solid}
+.ph-core{font-size:15px;color:var(--muted);line-height:1.75;max-width:540px}
+.ph-core strong{color:var(--ink);font-weight:500}
+
+/* JOURNEY PANEL */
+.journey-panel{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:24px}
+.jp-title{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:18px}
+.sp-row{margin-bottom:16px}
+.sp-labels{display:flex;justify-content:space-between;margin-bottom:5px}
+.sp-l,.sp-r{font-size:10px;color:var(--muted)}
+.sp-track{height:4px;background:var(--border-mid);border-radius:2px;position:relative;margin-bottom:3px}
+.sp-now{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;border:2px solid var(--white)}
+.sp-target{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;border:2px solid var(--white)}
+.sp-legend{display:flex;gap:14px;margin-top:14px}
+.sp-leg{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted)}
+.sp-leg-dot{width:8px;height:8px;border-radius:50%}
+
+/* PERSON BODY SECTIONS */
+.person-body{padding:0 0 64px}
+.pb-section{margin-top:52px}
+.pbs-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+
+/* SUPERPOWER */
+.superpower-card{background:var(--orange-tint);border:1px solid rgba(232,93,38,0.2);border-radius:14px;padding:28px 32px;position:relative;overflow:hidden}
+.sp-card-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.sp-card-title{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.2;color:var(--ink);margin-bottom:12px}
+.sp-card-body{font-size:14px;color:var(--muted);line-height:1.75}
+.sp-card-body strong{font-weight:500;color:var(--ink)}
+
+/* QUOTES */
+.quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote-card{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:22px}
+.qc-mark{font-family:'DM Serif Display',serif;font-size:48px;line-height:0.5;color:var(--orange);opacity:0.4;margin-bottom:12px;display:block}
+.qc-text{font-family:'DM Serif Display',serif;font-size:15px;font-style:italic;line-height:1.65;color:var(--ink);margin-bottom:10px}
+.qc-context{font-size:11px;color:var(--muted)}
+
+/* WHAT YOU NEED */
+.need-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.need-card{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:18px}
+.nc-label{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:7px}
+.nc-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:5px}
+.nc-body{font-size:12px;color:var(--muted);line-height:1.7}
+.nc-body strong{font-weight:500;color:var(--ink)}
+
+/* ONE HOUSE ROLE */
+.oh-card{background:#F0EDE6;border:1px solid rgba(14,14,13,0.12);border-radius:14px;padding:32px}
+.oh-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.oh-title{font-family:'DM Serif Display',serif;font-size:24px;font-style:italic;color:var(--ink);margin-bottom:16px;line-height:1.3}
+.oh-body{font-size:14px;color:var(--muted);line-height:1.75}
+.oh-body strong{color:var(--ink);font-weight:500}
+.oh-offerings{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.oh-chip{font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(14,14,13,0.07);color:var(--muted);border:1px solid rgba(14,14,13,0.12);font-weight:500}
+
+/* BACK */
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;padding:10px 0;margin-bottom:8px;border:none;background:none;transition:color 0.15s}
+.back-btn:hover{color:var(--ink)}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fi{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fi.vis{opacity:1;transform:none}
+.page.active .person-hero,.page.active .ov-hero{animation:fadeUp 0.4s ease both}
+
+@media(max-width:800px){
+  .arch-grid{grid-template-columns:1fr}
+  .ph-top{grid-template-columns:1fr}
+  .quotes-grid,.need-grid{grid-template-columns:1fr}
+  .gc-inner{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('overview')" style="cursor:pointer">MARKETWAKE</div>
+  <div class="nav-links" id="navLinks">
+    <button class="nav-btn" onclick="showPage('overview')">Overview</button>
+  </div>
+</nav>
+
+<!-- ═══ OVERVIEW ═══ -->
+<div class="page active" id="page-overview">
+  <div class="ov-hero">
+    <div class="container">
+      <div class="ov-eyebrow">Marketwake One House · Leadership Architecture · 2026</div>
+      <h1 class="ov-title">THE PEOPLE.<br>THE <em>ARCHETYPES.</em><br>THE VISION.</h1>
+      <p class="ov-sub">This is a map of who we are and where we are going together. Every page in this document was built from the vision responses each person wrote. The words are yours. The direction is shared. Click any name to see your profile.</p>
+    </div>
+  </div>
+
+  <div class="arch-section">
+    <div class="container">
+      <div class="arch-label">The seven archetypes</div>
+      <div class="arch-grid" id="arcGrid"></div>
+
+      <div style="margin-top:48px" class="fi">
+        <div class="gap-callout">
+          <div class="gc-inner">
+            <div class="gc-left">
+              <div class="gc-eyebrow">The missing piece</div>
+              <div class="gc-title">THE<br>IMPLEMENTOR</div>
+            </div>
+            <div class="gc-body">
+              Marketwake has the ideas, the strategy, the craft, the coaching, and the creative vision. The one archetype not yet fully present is the Implementor - the person whose entire job is to take the decisions made by the Visionary, Innovator, and Strategist and <strong>build them systematically into the company across all teams.</strong><br><br>
+              Without this role, great ideas stay in conversations. With it, everything the team described in their vision responses becomes organizational reality. <strong>This is the hire that makes One House possible.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ARCHETYPES = [
+  {id:'visionary', label:'Visionary', color:'#E8267A',
+   def:'Sees where the company must go before others can. Holds the question clearly enough that the right people can answer it.',
+   people:['Brooke']},
+  {id:'innovator', label:'Innovator', color:'#C44B9A',
+   def:'Generates new ideas, new offerings, new models. Restless with what exists. Pushes the org into territory it has never been before.',
+   people:['Bin']},
+  {id:'strategist', label:'Strategist', color:'#2A7D5F',
+   def:'Synthesizes complexity into clear direction. Connects the dots others miss. Thinks in systems and sequences, not just ideas.',
+   people:['Sammy','Amber']},
+  {id:'coach', label:'Coach', color:'#2563A8',
+   def:'Develops people and culture. Raises the floor of the team. Gets energy from others growing, not from their own output.',
+   people:['Garrett','Megan']},
+  {id:'technician', label:'Technician', color:'#B07020',
+   def:'Deep craft expertise. Raises quality through mastery. The person who actually knows how to do the thing at the highest level.',
+   people:['Ruben','Josh','Sydney']},
+  {id:'creative', label:'Creative', color:'#7C3ABE',
+   def:'Pushes the quality and ambition of the work itself. Holds the creative standard. Will not accept good when great is possible.',
+   people:['Mapi','Kristen']},
+  {id:'implementor', label:'Implementor', color:'#6B6B6B',
+   def:'Takes strategy and makes it real. Builds the systems and accountability structures that turn vision into execution across the org.',
+   people:[], isGap:true},
+];
+
+const PEOPLE = {
+  brooke: {
+    name:'Brooke', role:'CEO & Founder', archetype:'visionary',
+    tags:['North star setter','Org architect','Creates conditions','Holds the tension'],
+    core:'You are the person who created the conditions for everyone else in this document to do their best work. The Visionary does not need to have all the answers. <strong>The Visionary holds the question clearly enough that the right people can find the answer.</strong> That is exactly what the vision exercise itself demonstrates.',
+    superpower:{
+      title:'You see the org that does not exist yet',
+      body:'While everyone else described the future of their team, you built the framework that let ten people independently arrive at the same destination. <strong>That is not facilitation - that is vision.</strong> The ability to design a question that produces aligned answers across an entire leadership team is a rare and consequential capability. It is the reason One House is a direction and not just an aspiration.'
+    },
+    quotes:[
+      {text:'Marketwake has influence. We become an influential voice, doing influential work. We have something to say, and are comfortable sharing our opinions.',context:'Vision Exercise framing'},
+      {text:'We are aligning on where Marketwake is so we can build intentionally, not accidentally. This is not about forecasting or headcount math.',context:'Vision Exercise framing'},
+    ],
+    spectra:[
+      {l:'Holds vision alone',r:'Shares the vision',now:70,target:45},
+      {l:'Reacts to org',r:'Designs the org',now:60,target:85},
+      {l:'In the work',r:'Above the work',now:55,target:82},
+      {l:'Dept. focus',r:'Company-wide focus',now:60,target:90},
+    ],
+    needs:[
+      {label:'From the Strategist',title:'Sammy translating vision into sequence',body:'You need someone who can take the direction you set and map the logical path from here to there. <strong>Sammy is that person</strong> - give her the big structural questions and she will return with the framework.'},
+      {label:'From the Implementor',title:'The missing role - urgently',body:'Every great idea you generate and every framework Sammy builds needs someone to systematically build it into the company. <strong>This is the hire that unlocks everything else.</strong>'},
+      {label:'From the team',title:'Permission to move before it is perfect',body:'The team is ready for the structural changes you are describing. They named the same future independently. <strong>They are waiting for the signal, not the perfect plan.</strong>'},
+    ],
+    futureRequires:{
+      title:'You are already living what the future requires.',
+      body:'The Visionary\'s work is never done - it evolves. <strong>The invitation for this chapter is to move from holding the vision privately to distributing it actively.</strong> The team is ready. The direction is shared. The structure needs to be named, decided, and launched. The future requires one thing above all: the decision to build intentionally, starting now.',
+      items:['Name the organizational structure explicitly - the team is waiting for the signal not the perfect plan','Protect time for vision work that is not reactive to client or operational noise','Have the archetype conversation with each leader - individually, specifically, about their path','Hire the Implementor - this is the single unlock that makes everything else compound'],
+    },
+  },
+
+  bin: {
+    name:'Bin', role:'VP of Marketing', archetype:'innovator',
+    tags:['Idea generator','New offerings','Pod architect','Innovation engine'],
+    core:'You are Marketwake\'s most generative thinker. While others described improving what exists, <strong>you described building what does not exist yet</strong> - acquisitions, new service lines, a merchandise brand, an internal content engine, a pod structure, a marketing book. Your energy is the reason Marketwake keeps expanding its sense of what is possible.',
+    superpower:{
+      title:'You see Marketwake as a product, not just a company',
+      body:'No one else in the building described the agency itself as something to be designed, packaged, and launched. <strong>You think about Marketwake the way a founder thinks about a product</strong> - what does it offer, who does it serve, how does it grow, what is the next version? That entrepreneurial lens is what generates the acquisitions thinking, the merchandise brand, the media company vision. It is genuinely rare and it is what keeps Marketwake from standing still.'
+    },
+    quotes:[
+      {text:'By year 3-5 the goal is to build lieutenants across the organization who can lead independently and scale Marketwake beyond its current leadership structure.',context:'Year 3 Vision Response'},
+      {text:'Leaders must become market movers, not just managers.',context:'On critical skills'},
+    ],
+    spectra:[
+      {l:'Generates ideas',r:'Filters and sequences ideas',now:90,target:88},
+      {l:'Inspires the org',r:'Equips the org',now:85,target:60},
+      {l:'Individual innovation',r:'Multiplied through others',now:68,target:35},
+      {l:'Sees the idea',r:'Sees the path to it',now:88,target:65},
+    ],
+    needs:[
+      {label:'From the Implementor',title:'Someone to catch what you generate',body:'Your greatest strength - idea velocity - is only fully realized when someone can systematically build the ideas you generate into the company. <strong>The Implementor is not a constraint on your creativity. They are its amplifier.</strong>'},
+      {label:'From yourself',title:'Clarity on what is actually in flight - and what done looks like',body:'The strength of your vision is also its risk: many ideas can be alive simultaneously without clear ownership, sequencing, or definition of done. <strong>The future requires you to be as clear about what is rolling out, when, and what success looks like as you are about what to build next.</strong> Not every idea needs to move at once - and the ones that do move need a clear rollout plan, a named owner, and a finish line. That discipline is what converts innovation into organizational progress.'},
+      {label:'From the org',title:'A shared idea intake process',body:'A place where new ideas land, get evaluated against capacity and strategic fit, and receive a clear decision. <strong>This protects your best ideas from being lost in the volume of all your ideas.</strong>'},
+    ],
+    futureRequires:{
+      title:'The future requires you to become the architect of Marketwake\'s innovation process, not just its most prolific innovator.',
+      body:'Your idea velocity is a genuine asset. <strong>The next evolution is building the system by which Marketwake generates, evaluates, and executes on new ideas - so the org compounds on your energy rather than absorbing it.</strong> That means defining how many initiatives can run in parallel, naming who executes each one, and accepting that selection is a more powerful skill than generation at this stage of the company.',
+      items:['Build a shared innovation intake process - where ideas land, get evaluated, and receive a clear yes or not yet','For every initiative you own, name a second person who could carry it within 12 months','Sequence external brand-building after internal milestones - the story is most powerful when it describes something already built','Channel your energy into the ICP definition - it is the highest-leverage innovation available right now'],
+    },
+  },
+
+  sammy: {
+    name:'Sammy', role:'Director of Strategy', archetype:'strategist',
+    tags:['Systems architect','Growth frameworks','Integration thinker','Upstream problem-solver'],
+    core:'You are the connective tissue of this leadership team. While others described their team\'s future, <strong>you described the company\'s future</strong> - the pod tension, the AM gap, the channel-to-outcome shift, the creative-performance divide. You are the person who sees which problems are upstream of which, and that sequencing instinct is one of the rarest capabilities in the building.',
+    superpower:{
+      title:'You name the problem before anyone else knows it is a problem',
+      body:'Your vision synthesis document called out the pod model tension, the AM role ambiguity, and the channel structure as broken - without being asked. <strong>Most people wait to be asked the hard question. You volunteer the hard answer.</strong> That willingness to name uncomfortable truths clearly, and early, is what makes you the person this leadership team needs when the structural decisions get made.'
+    },
+    quotes:[
+      {text:'Pods focused around accounts are nearly impossible to sustain because of the ever-changing nature of clients. When we focus the pod around an account manager or client set, we are catering our systems to that client set.',context:'Vision Synthesis Document'},
+      {text:'We are designing growth systems that compound over time. Clients view us as their outsourced growth leadership team, not just a marketing vendor.',context:'Year 3 Vision Response'},
+    ],
+    spectra:[
+      {l:'Dept. strategy',r:'Company strategy',now:78,target:32},
+      {l:'Explains the plan',r:'Builds the plan',now:65,target:82},
+      {l:'Reactive to inputs',r:'Proactive framer',now:55,target:80},
+      {l:'Client delivery focus',r:'Company direction focus',now:70,target:40},
+    ],
+    needs:[
+      {label:'From the Visionary',title:'The structural decisions made at the top',body:'You can see what the org needs with extraordinary clarity. <strong>What you need is for those decisions to be made with authority</strong> - the service model, the pod structure, the AM role definition - so you can build the framework that delivers them.'},
+      {label:'From the Implementor',title:'A partner to turn your frameworks into systems',body:'You design the architecture. <strong>The Implementor builds the infrastructure.</strong> This is the partnership that makes the strategy real - your sequencing instinct combined with their execution discipline.'},
+      {label:'From leadership',title:'Protected time for company-level thinking',body:'Your strategic capacity is currently deployed primarily on client work. <strong>Even four hours a week of ringfenced company strategy time</strong> changes what you are able to see and build for Marketwake.'},
+    ],
+    futureRequires:{
+      title:'Pull yourself out of the client work long enough to build the systems that make the client work better.',
+      body:'Your vision was the closest to the company\'s north star of anyone on this team. You already see it clearly. <strong>The gap is not insight - it is time allocation.</strong> Right now too much of your strategic capacity is being consumed by individual client delivery, solving one client\'s problem in depth rather than building the framework that solves that problem for every client. Don\'t let good client work be the enemy of great company-building. <strong>The systems you design for Marketwake will outlast any single client engagement by years.</strong> That is where your highest contribution lives - and it requires protecting the time to build it, not just fitting it in around delivery.',
+      items:['Protect dedicated time each week for company-level systems work - not client-adjacent, not reactive','Resist the pull to over-engineer a single client solution - ask instead: what framework does this become?','Your vision response was closest to the org\'s north star - now build the road, not just the map','Balance delivery excellence with the systems that make delivery excellent at scale'],
+    },
+  },
+
+  garrett: {
+    name:'Garrett', role:'VP of Media', archetype:'coach',
+    tags:['Leader builder','Standards setter','Three-team architect','Creative-performance integrator'],
+    core:'You are the clearest Coach in this leadership team - and you know it. You explicitly described yourself as not a channel operator, not a technician, not a firefighter. <strong>Your job is to build the people who do the work, not to do the work yourself.</strong> That clarity of role identity is rare and is exactly what Marketwake needs as it scales three distinct media-side teams. The next evolution of that coaching instinct is ensuring the teams you build can operate - and innovate - without needing you in the room.',
+    superpower:{
+      title:'You hold creative and performance as one integrated system',
+      body:'No one else in the building is simultaneously thinking about social creative, paid performance, and production quality as one machine. <strong>The idea that great creative and great performance are not in tension - that they are the same thing - is Garrett\'s thesis.</strong> That integration instinct is what will define Marketwake\'s media capability. The work now is to build the systems, tools, and standards that make that integration run without depending on your constant presence.'
+    },
+    quotes:[
+      {text:'Seeing creative and paid working as one machine. That combination - strategy, creativity, data, and production - makes the work far more impactful.',context:'What excites you - Year 3'},
+      {text:'I build leaders, set standards, integrate teams, close major deals, and protect prestige. I am not a channel operator, project manager, or workflow firefighter.',context:'My role in Year 3'},
+    ],
+    spectra:[
+      {l:'Does the work',r:'Builds who does it',now:35,target:18},
+      {l:'Manages output',r:'Develops people',now:62,target:85},
+      {l:'Standards set by you',r:'Standards run without you',now:58,target:82},
+      {l:'Reactive to team needs',r:'Proactive systems and tools builder',now:50,target:78},
+    ],
+    needs:[
+      {label:'From the org',title:'The lead pipeline to be funded',body:'Your vision depends on a Social Lead, Paid Director, and Production Lead all developing. <strong>Every month those roles are unfilled is a month you cannot fully step into your own role.</strong> Treat those hires as your performance infrastructure.'},
+      {label:'From the team',title:'Teams that run the playbook you build',body:'The next level of coaching is <strong>building systems, workflows, and standards clear enough that your teams operate at a high level whether you are in the room or not.</strong> That clarity - documented, trained, and held - is what scales the work you have built.'},
+      {label:'From yourself',title:'Proactive adoption of tools that give your teams leverage',body:'The best coaches do not just develop people - they equip them. <strong>Identifying, testing, and implementing the AI tools, production workflows, and creative systems that give your teams more time to do the work that matters</strong> is a core part of the job at this stage. The question is not whether to adopt new tools. It is which ones to lead with.'},
+    ],
+    futureRequires:{
+      title:'Building systems and tools that make your standard run without you.',
+      body:'You have built the coaching instinct. The next evolution is building the infrastructure that makes your standard structural rather than personal. <strong>That means two things: equipping your teams with the tools and AI workflows that remove the repetitive work so they can focus on the creative and strategic work - and building standards clear enough that a new hire can understand the bar without you explaining it.</strong> The Coach who builds systems outlasts the Coach who only develops people. Both matter. The systems are what scale.',
+      items:['Actively identify and implement AI and production tools that expand your teams\' creative capacity','Build documented standards for what excellent work looks like in each of your three team areas','Make hard calls on talent clarity - the team needs to know what the bar is, not just feel it','Push your teams to innovate proactively - new formats, new tools, new approaches - before the market requires it'],
+    },
+  },
+
+  amber: {
+    name:'Amber', role:'Account Management', archetype:'strategist',
+    tags:['Revenue strategist','Client growth architect','Commercial thinker','Altitude operator'],
+    core:'You think about client relationships the way a CFO thinks about a portfolio - in terms of revenue, margin, positioning, and long-term value. <strong>That financial and strategic lens applied to account management is what separates a relationship manager from a growth architect.</strong> You described your future role as developing POV content, bringing innovative partners to the table, and influencing industry conversations. That is Strategist territory.',
+    superpower:{
+      title:'You see the commercial picture that most people in client-facing roles miss',
+      body:'You named margin, contribution modeling, retention forecasting, pricing adjustments, and contract expansion as core competencies - not as finance concepts but as client relationship tools. <strong>That financial fluency applied to account management is genuinely rare.</strong> It is the capability that turns an AM function into a revenue growth function, and it is what Marketwake needs as it moves from managing clients to influencing them.'
+    },
+    quotes:[
+      {text:'We stopped being implementers. We became strategic multipliers. We are not taking low-margin, unclear-scope work. We are not onboarding unqualified clients.',context:'Year 5 Vision Response'},
+      {text:'At this level the team must think in revenue, margin, positioning, and industry trends - not "did we deliver the tasks?"',context:'On critical skills - Year 5'},
+    ],
+    spectra:[
+      {l:'Relationship manager',r:'Revenue strategist',now:58,target:82},
+      {l:'Client satisfaction',r:'Client influence',now:62,target:85},
+      {l:'Reactive to clients',r:'Proactive growth roadmapper',now:55,target:82},
+      {l:'Internal focus',r:'Industry presence',now:42,target:70},
+    ],
+    needs:[
+      {label:'From the org',title:'Clarity on what AMs own vs. what Offering Leads own',body:'The AM role is evolving into growth architecture. <strong>That evolution requires a clear definition of the handoff</strong> - you own the client relationship and growth roadmap; the Offering Lead owns delivery. Without that boundary, the AM stays in execution.'},
+      {label:'From the Strategist',title:'Sammy\'s growth frameworks as your client tool',body:'The outcome-based offering frameworks Sammy is designing are <strong>your primary tool in client conversations.</strong> The tighter that framework, the more confidently you can present growth roadmaps and expansion opportunities.'},
+      {label:'From the Implementor',title:'AM infrastructure that is consistent, not personal',body:'The best version of the AM function is <strong>a repeatable system, not a collection of individual styles.</strong> Structured intake, growth roadmap templates, expansion playbooks - these are what make the AM function scalable beyond the people who happen to be in those seats.'},
+    ],
+    futureRequires:{
+      title:'The future requires the AM function to be defined - and you are the person to define it.',
+      body:'The ambiguity between what AMs own and what delivery teams own is one of the most important structural questions Marketwake needs to answer. <strong>You are uniquely positioned to answer it - you have the financial fluency, the client depth, and the strategic lens to design what great account management looks like at $50M.</strong> The future does not need you to be a better AM. It needs you to design what the AM function becomes.',
+      items:['Define the AM role explicitly - what you own, what the Offering Lead owns, and where the handoff is','Build the client growth roadmap framework that every AM uses','Own the client selection framework - who Marketwake serves and the formal process for exiting misalignment','Develop your external POV - one published perspective per quarter, tied to what Marketwake is building'],
+    },
+  },
+
+  josh: {
+    name:'Josh', role:'Director of SEO', archetype:'technician',
+    tags:['AI search pioneer','Framework builder','Thought leader in progress','Organic growth systems'],
+    core:'You are a Technician who is actively becoming something more - and you are the furthest along that path of anyone in your archetype. You are not just doing SEO. <strong>You are defining what SEO becomes in an AI-search world.</strong> The research you described publishing, the frameworks you want cited by the industry, the AI adoption mandate across the agency - these are the moves of someone building a category, not just a practice.',
+    superpower:{
+      title:'You are betting on the category shift before it is certain - and you are right',
+      body:'While most of the industry is still treating AI as an SEO threat or an efficiency tool, <strong>you described AI search as a fundamental reframe of what organic demand means.</strong> That early, confident bet on a category shift - combined with the technical depth to build frameworks around it - is the capability that could make Marketwake the most credible voice in AI-era search. That is a significant competitive asset.'
+    },
+    quotes:[
+      {text:'Building systems that scale organic demand. Leading AI adoption across the agency. Developing custom SEO and search intelligence frameworks. Publishing research and frameworks that drive industry attention.',context:'What my role looks like - Year 3'},
+      {text:'Our research and frameworks are referenced in the industry. SEO influences major strategic decisions, not just marketing execution.',context:'Signals Marketwake is working - Year 3'},
+    ],
+    spectra:[
+      {l:'Channel execution',r:'Organic growth systems',now:48,target:78},
+      {l:'Internal expert',r:'Industry voice',now:45,target:75},
+      {l:'Reactive technical',r:'Proactive systems architect',now:52,target:80},
+      {l:'SEO as service line',r:'SEO as growth driver',now:55,target:85},
+    ],
+    needs:[
+      {label:'From the org',title:'A formal AI adoption mandate',body:'You named leading AI adoption across the agency as a core part of your role. <strong>That needs to be official, not informal.</strong> A company-wide AI integration mandate, a budget, and a seat at the leadership table when AI-related decisions get made.'},
+      {label:'From the Strategist',title:'Sammy to connect organic growth to the service model',body:'The channel-to-outcome shift affects SEO as much as any service. <strong>Your systems thinking paired with Sammy\'s strategic architecture</strong> can produce the framework for what organic authority looks like as a Marketwake offering.'},
+      {label:'From the org',title:'Time and support to publish',body:'The thought leadership plan you described - research frameworks that get cited by the industry - does not happen in the margins of client work. <strong>It needs protected time, editorial support, and a distribution strategy</strong> that Marketwake actively promotes.'},
+    ],
+    futureRequires:{
+      title:'The future requires you to make Marketwake\'s AI search thesis visible - not just to clients, but to the industry.',
+      body:'You are betting on a category shift before it is certain. That is a high-value move. <strong>The future requires you to make that bet public, specific, and associated with Marketwake - through research, frameworks, and thought leadership that gets cited.</strong> The thought leadership plan you described is not a nice-to-have. It is the investment that converts technical depth into market authority. And it requires time, support, and a mandate that makes it official.',
+      items:['Publish the first research framework within 90 days - with Marketwake\'s name on it','Formalize the AI adoption mandate across the agency - not just the SEO team','Connect organic growth strategy directly to Sammy\'s service model redesign','Develop Colin\'s path explicitly so your own elevation does not leave the technical depth behind'],
+    },
+  },
+
+  kristen: {
+    name:'Kristen', role:'Content Strategist', archetype:'creative',
+    tags:['Campaign strategist','Brand voice architect','Creative leadership','Performance creative'],
+    core:'You are a Creative who approaches the work through language and strategy rather than visual craft - and that combination is rarer than it sounds. <strong>You see campaigns as a whole system with a point of view, not a collection of deliverables.</strong> Your frustration with low-value scopes is the clearest signal of a Creative archetype: you know what the work could be, and you refuse to pretend the current state is good enough.',
+    superpower:{
+      title:'You make words do the work that visuals get credited for',
+      body:'Campaign concepting, brand narrative, performance creative strategy, website messaging architecture - these live at the intersection of craft and strategy. <strong>The ability to concept, write, and strategize a campaign from a single integrated brief is what separates a content function from a creative function.</strong> That capability - applied with clarity and ambition - is what changes what Marketwake can offer and win.'
+    },
+    quotes:[
+      {text:'By Year 5, creative strategy now anchors most new business engagements. We produce campaigns, brand platforms, and websites that win industry awards, attract exciting clients, and give team members portfolio-defining work.',context:'Year 5 Vision Response'},
+      {text:'We have intentionally reduced work that positions our team as content producers instead of creative partners. When our team is involved, creative strategy and collaboration are part of the engagement.',context:'What work we no longer do'},
+    ],
+    spectra:[
+      {l:'Content production',r:'Creative leadership',now:55,target:82},
+      {l:'Execution focus',r:'Campaign concepting',now:52,target:80},
+      {l:'Individual writing',r:'Team creative direction',now:48,target:75},
+      {l:'Reactive to briefs',r:'Proactive creative voice',now:45,target:78},
+    ],
+    needs:[
+      {label:'From tools and yourself',title:'Low-value work is a tools and process problem - own the solution',body:'The low-level, repetitive content work that drains your team has a solution that does not require a leadership policy decision: <strong>AI and workflow automation can absorb a significant portion of it right now.</strong> The question is whether you are actively seeking and implementing those tools, or waiting for someone else to solve it. If the answer is the latter, that is a leadership gap worth naming. Your team\'s capacity is yours to protect - and the tools to do it exist. Ask for help implementing them if needed, but own the outcome.'},
+      {label:'From clients',title:'Briefs that start with strategy, not deliverables',body:'The best version of your work begins with a brand problem, not a content calendar. <strong>The AM role in the new model brings you in at the strategy stage</strong> - exactly where your capability is most valuable and most distinct.'},
+      {label:'From yourself',title:'A shift from protecting capacity to building it',body:'Your vision response was thoughtful and specific. It also spent more energy on workload protection - hours per day, revision timers, client limits - than on the direction and systems that would make those protections unnecessary. <strong>The future you described is genuinely ambitious. Getting there requires leading from possibility, not from protection.</strong> The question is not how to reduce the load of the current model. It is how to build the new model that makes the current load irrelevant.'},
+    ],
+    futureRequires:{
+      title:'The next chapter is about building direction, not protecting capacity.',
+      body:'You described a compelling future - campaign-led work, creative strategy at the center, portfolio-defining projects. <strong>The path to that future runs through systems and scale, not self-preservation.</strong> What would it look like to spend less energy managing the limits of the current model and more energy designing the model that replaces it? Efficiency comes from AI and process design, not from capping hours. Influence comes from building creative frameworks others learn from. <strong>The Creative archetype at its most powerful does not just hold the standard - it builds the infrastructure that makes the standard scalable without depending on one person to enforce it.</strong> The invitation is to lead toward the vision, and let the operational structure follow that energy.',
+      items:['Build creative frameworks that others execute from - not just standards you hold personally','Embrace AI as a craft multiplier, not a threat to the quality of the work','Define what great creative strategy looks like across outcome-based offerings, wherever copy lives','Lead with the ambition of the work - the systems and protections will follow a clear creative vision'],
+    },
+  },
+
+  mapi: {
+    name:'Mapi', role:'Associate Creative Director', archetype:'creative',
+    tags:['Creative standard-setter','Brand ambition','Portfolio-worthy work','Creative culture builder'],
+    core:'You are the Creative archetype in its purest form. Your entire vision response was organized around one question: is the work good enough? Not good enough for the client, not good enough for the brief - <strong>good enough to be proud of.</strong> That standard - the Cannes Lion, the Super Bowl ad, the nationwide rebrand - is not perfectionism. It is the creative conscience that prevents Marketwake from becoming a production shop. The challenge ahead is learning to hold that standard at scale, not just in the work you personally touch.',
+    superpower:{
+      title:'You hold the standard that everything else gets measured against',
+      body:'The most valuable thing a Creative does is not produce the best work - it is <strong>refuse to accept work that is not the best.</strong> That refusal, applied consistently and taught to others, raises every designer\'s ceiling, changes what clients think is possible, and builds the portfolio that attracts the clients who deserve the work. Your presence is what makes Marketwake quality mean something specific. Without a standard being held, the work drifts toward what is fast and acceptable. With it, the work reaches for what is memorable.'
+    },
+    quotes:[
+      {text:'We are only doing work that we LOVE. Hopefully clients will be coming our way because they know our name. Maybe this is the year we can win a Cannes Lion.',context:'What excites me - Year 5'},
+      {text:'Workloads are manageable and there is no longer a feeling of constant burn-out. Creatives love the work we get to do at Marketwake - feel energized and invigorated.',context:'Signals Marketwake is working - Year 3'},
+    ],
+    spectra:[
+      {l:'Executes creative',r:'Directs creative',now:62,target:85},
+      {l:'Holds the standard',r:'Teaches and scales the standard',now:55,target:82},
+      {l:'Reactive to briefs',r:'Proactively sets creative direction',now:58,target:85},
+      {l:'Personal creative output',r:'Creative systems that outlast you',now:52,target:80},
+    ],
+    needs:[
+      {label:'From the org',title:'One flagship win, now',body:'The single highest-leverage move available right now is one project - a rebrand, a campaign, a shoot - that the team would be proud to put in the portfolio. <strong>That one win changes the team energy, the portfolio, and the clients it attracts.</strong> Remove the obstacles that are preventing it.'},
+      {label:'From yourself',title:'Openness to owning work you do not fully control',body:'The desire for Marketwake to own creative on every engagement is understandable - it protects quality. But it also limits growth. <strong>Some of the most impactful creative leadership happens when you set the standards and build the frameworks that govern work even when you are not the one holding the pen.</strong> Scale requires trusting the system you build, not only the work you personally approve.'},
+      {label:'From the org',title:'Client exit decisions at the leadership level',body:'The clients who drain creative energy cannot be exited one at a time through creative pushback. <strong>A leadership-level decision about which clients Marketwake no longer serves</strong> gives you the portfolio conditions your vision requires.'},
+    ],
+    futureRequires:{
+      title:'The vision you described requires systems thinking, not just creative standards.',
+      body:'You described a future where the work is extraordinary, the team is energized, and clients come to Marketwake because of reputation. That future is achievable. <strong>But it requires a shift from creative director as the standard-holder to creative director as the standard-builder.</strong> The difference: one requires your presence in every decision. The other scales without you. Proactive innovation - embracing new tools, new workflows, new ways of producing work - is what keeps the standard high as the team and client base grows. <strong>The question the future asks of you is this: are you willing to change how the work gets made in order to protect the quality of what gets made?</strong> That is the creative leader Marketwake needs at scale.',
+      items:['Build creative systems and frameworks that others execute from - not only work you personally direct','Embrace AI and new production tools as ways to reach the ambition faster, not threats to the craft','Develop openness to great work happening across a range of client relationships, including some you do not fully control','Lead proactive innovation on the team - new formats, new processes, new tools - before the industry forces it'],
+    },
+  },
+
+  megan: {
+    name:'Megan', role:'Executive Assistant', archetype:'coach',
+    tags:['Ops systems thinker','CEO bandwidth protector','Cross-functional connector','Evolving toward Strategist'],
+    core:'You are currently operating as a Coach - building the conditions that let the leadership team perform at its highest level. But your vision response revealed something important: <strong>you think about operations the way a Strategist thinks about a business.</strong> You diagnosed the scaling problem before anyone asked, designed the org structure that solves it, and described a future built on systems and architecture rather than task management. That is not a Coach\'s instinct. It is a Strategist\'s. The path forward is earning and growing into that role - through proactive systems-building, not reactive task support.',
+    superpower:{
+      title:'You see the operational truth that everyone else is too close to notice',
+      body:'Your opening statement was the most honest diagnosis in any response: informal communication works at 50 people and breaks at 120. Leaders compensate for broken systems. The CEO absorbs operational noise. <strong>The ability to see that clearly - and to design the systems that fix it before the growth makes it unfixable - is the rarest operational capability there is.</strong> Everyone describes the symptoms. You described the cause and the infrastructure that cures it.'
+    },
+    quotes:[
+      {text:'The goal is not to standardize our ideas for the sake of it, but rather to standardize how work flows, how revenue moves, and how decisions are made - so our creative and strategic teams have more freedom, not less.',context:'Operations Vision Opening'},
+      {text:'Operations being the reason our team has more space to think, expand, and get out of the office to be creative. Keeping clients happy because we operate so efficiently.',context:'What excites me - Year 3'},
+    ],
+    spectra:[
+      {l:'Reactive task support',r:'Proactive systems design',now:38,target:80},
+      {l:'Administrative execution',r:'Operational strategy',now:42,target:78},
+      {l:'Responds to requests',r:'Anticipates and builds ahead',now:40,target:82},
+      {l:'Coach archetype',r:'Strategist archetype',now:35,target:72},
+    ],
+    needs:[
+      {label:'From yourself',title:'A shift from managing tasks to building systems',body:'The EA role as it currently functions is reactive by design. <strong>The version of this role that creates real leverage is proactive</strong> - identifying what needs to be automated, designing the process before someone asks for it, and building the infrastructure rather than filling the gap. That transition is available to you. It requires choosing systems-building over task-completion every time there is a choice between the two.'},
+      {label:'From Ruben',title:'A shared automation mandate',body:'The Ops automation layer you described and the internal tooling Ruben is building are the same project from two different angles. <strong>You define what needs to be automated. Ruben builds the technical infrastructure.</strong> That collaboration - explicit, time-bound, with a shared deliverable - is the fastest path to the automated ops layer both your visions depend on.'},
+      {label:'From leadership',title:'The Ops build treated as a strategic investment, not internal overhead',body:'The systems you are building are not support work. <strong>They are the conditions that make $50M possible.</strong> Automated proposals, capacity dashboards, structured intake, billing infrastructure - these deserve leadership priority and protected time, not whatever is left after client work is handled.'},
+    ],
+    futureRequires:{
+      title:'The transition from reactive support to proactive operational strategy.',
+      body:'Your vision described a future where operations is the reason the team has freedom to be creative. <strong>That future requires you to stop waiting to be asked and start building ahead of the need.</strong> The Strategist operating under the surface of your current role needs to be given room to run. That means spending less time managing today\'s requests and more time designing the systems that make tomorrow\'s requests unnecessary. <strong>The question the future asks of you: what would you build this week if no one asked you to do anything?</strong> That answer is the job.',
+      items:['Identify and implement three automation opportunities in the next 90 days - without being asked','Build the ops infrastructure as if you own it permanently, not as a project with an end date','Develop the operational strategy that connects how work flows to how revenue moves to how clients feel','Move from supporting the leadership team\'s decisions to shaping the operating conditions they make decisions within'],
+    },
+  },
+
+  ruben: {
+    name:'Ruben', role:'Development Director', archetype:'technician',
+    tags:['Platform architect','Systems builder','Automation engineer','Technical standards owner'],
+    core:'You are a Technician who is actively evolving into a systems architect - and you are doing it with clarity and intention. Your entire vision response was organized around one insight: <strong>stop solving the same problem twice.</strong> Build the framework once. Build the component once. Build the automation once. That systems instinct - applied to development - is what transforms a dev team from a cost center into a strategic differentiator.',
+    superpower:{
+      title:'You build things once that everyone else uses forever',
+      body:'The Webflow framework, the WordPress standards, the reusable component library, the internal automation tools - <strong>these are not dev projects. They are organizational infrastructure.</strong> Every hour your team spends rebuilding something from scratch is an hour that could have been spent improving the system that means it never gets rebuilt again. That compounding logic - build once, improve continuously - is Ruben\'s operating principle. It is the reason the dev team has the potential to be Marketwake\'s highest-leverage team over a five-year horizon.'
+    },
+    quotes:[
+      {text:'There is a lot more room for creativity when you are building tools, automations, and platforms instead of repeating the same build process over and over.',context:'What excites me - Year 3'},
+      {text:'Developers think about how to solve problems once instead of solving them repeatedly. If something is done more than a few times, someone is probably thinking about how to streamline it.',context:'Standards defining excellence - Year 3'},
+    ],
+    spectra:[
+      {l:'Page builder',r:'Platform architect',now:28,target:68},
+      {l:'Individual coder',r:'Systems designer',now:32,target:72},
+      {l:'Reactive to requests',r:'Proactive infrastructure builder',now:35,target:70},
+      {l:'Dev team focus',r:'Cross-team technical enablement',now:30,target:62},
+    ],
+    needs:[
+      {label:'From the org',title:'Protected capacity for framework and tooling work',body:'Reusable frameworks and internal tools will never be built if they compete with client delivery on equal terms. <strong>Even 20% of the dev team\'s time, consistently protected, compounds enormously over 12 months.</strong> This is not a nice-to-have. It is the investment that changes what the dev team is capable of.'},
+      {label:'From Megan',title:'A shared automation mandate',body:'The internal tooling you are building and the operational infrastructure Megan needs are the same project approached from two sides. <strong>An explicit collaboration - one shared deliverable, one shared timeline</strong> - produces faster results than two parallel tracks.'},
+      {label:'From the org',title:'Technical leadership visibility',body:'The platform decisions you make - frameworks, standards, performance benchmarks - affect every client engagement and every team. <strong>Those decisions deserve a seat at the leadership table</strong> when technical infrastructure affects a strategic choice.'},
+    ],
+    futureRequires:{
+      title:'The future requires you to build once what everyone else uses forever.',
+      body:'<strong>Every hour your team spends rebuilding something from scratch is an hour that could have been spent improving the system that means it never gets rebuilt again.</strong> The path from page-builder to platform architect is available to you - you described it clearly. The only thing standing between where you are and where you are headed is protected time and a mandate to invest in the infrastructure rather than filling every client request as it comes in.',
+      items:['Protect 20% of dev capacity for framework and tooling work - as a policy, not a goal','Build the automation layer with Megan - you define what to build, she defines what needs automating','Make your technical decisions visible in leadership conversations - they affect every client engagement','Start the specialization conversation now - which developer grows toward which track'],
+    },
+  },
+
+  sydney: {
+    name:'Sydney', role:'Social Media Strategy', archetype:'technician',
+    tags:['Platform mastery','Cultural intelligence','Audience architect','Social-first innovator'],
+    core:'You know how social actually works at a level nobody else in this building does - not the platform mechanics, but the cultural logic underneath them. <strong>Why people stop scrolling, what makes a brand feel relevant without trying, how audience behavior signals what a brand should say next.</strong> That intelligence is what makes the difference between a social presence that grows and one that just posts. It is rare, it is compounding, and it is yours.',
+    superpower:{
+      title:'You read cultural signals that everyone else sees after they have already passed',
+      body:'Trend identification, platform behavior analysis, the ability to know what a brand should do on social before the data confirms it - <strong>this is pattern recognition applied to culture, and it is a skill that cannot be automated or outsourced.</strong> The Social Intelligence Director role you described is not just a career progression. It is a new function that turns social listening into a strategic input for the whole agency. When Sydney tells you what audiences are doing, that is not a social report. That is business intelligence.'
+    },
+    quotes:[
+      {text:'Because social media generates the largest real-time dataset of audience behavior in marketing, my role interprets those signals and turns them into growth strategies - identifying what drives discovery, how audiences engage with brands, and signals of emerging demand.',context:'What I am responsible for - Year 3'},
+      {text:'We must start working together as one house. We should start a more consistent feedback system. We must start taking risks, being bold, and not afraid to do something crazier.',context:'What must we start doing today'},
+    ],
+    spectra:[
+      {l:'Platform management',r:'Social intelligence function',now:42,target:75},
+      {l:'Content execution',r:'Audience architecture',now:45,target:78},
+      {l:'Channel focus',r:'Cross-channel insight leader',now:40,target:70},
+      {l:'Dept. expert',r:'Agency intelligence asset',now:35,target:68},
+    ],
+    needs:[
+      {label:'From the org',title:'A role definition that reflects what you actually do',body:'Social media management undersells the function you are describing. <strong>Audience behavior interpretation, cultural signal reading, and cross-channel insight generation</strong> are the primary responsibilities. A role description that names those things changes what you can ask for, hire toward, and offer clients.'},
+      {label:'From the org',title:'The specialization hire to start now',body:'Your vision requires a team of specialists - community, analytics, creator partnerships, video. <strong>Every generalist hire delays that future by 12-18 months.</strong> The next hire should be a specialist, not another generalist SMM.'},
+      {label:'From Garrett',title:'A direct connection between social intelligence and paid strategy',body:'The audience signals you read from organic social are the most valuable input for paid creative testing. <strong>A formal workflow between your intelligence function and Garrett\'s paid teams</strong> turns your observations into performance advantages.'},
+    ],
+    futureRequires:{
+      title:'The future requires you to name what you actually do - and build the function around it.',
+      body:'Social media management undersells the function you described. <strong>Audience behavior interpretation, cultural signal reading, and platform intelligence are the real capabilities - and they are genuinely rare.</strong> The future requires giving that function a name, a scope, and a team structure that reflects what it actually is. That starts with the next hire being a specialist, not another generalist, and with a role description that changes what you can ask for, hire toward, and offer clients.',
+      items:['Write a role description that names audience intelligence as the primary function - not social media management','Make the next hire a specialist, not a generalist - the specialization starts with this decision','Build a formal workflow that connects your audience signals to paid creative strategy','Address the burnout directly - specialization and role clarity are the structural solution, not a wellness response'],
+    },
+  },
+};
+
+// ─── Build nav ───
+const navLinks = document.getElementById('navLinks');
+[['overview','Overview'],...Object.entries(PEOPLE).map(([k,p])=>[k,p.name]),['implementor','Implementor']].forEach(([k,label])=>{
+  const btn = document.createElement('button');
+  btn.className = 'nav-btn';
+  btn.textContent = label;
+  btn.onclick = () => showPage(k);
+  navLinks.appendChild(btn);
+});
+
+// ─── Build overview archetype grid ───
+const arcGrid = document.getElementById('arcGrid');
+ARCHETYPES.forEach(arc => {
+  const card = document.createElement('div');
+  card.className = 'arch-card' + (arc.isGap ? ' gap-card' : '');
+  card.style.setProperty('--ac', arc.color);
+  card.innerHTML = `
+    <div class="ac-name">${arc.isGap ? 'Missing: ' : ''}${arc.label}</div>
+    <div class="ac-def">${arc.def}</div>
+    <div class="ac-people">
+      ${arc.isGap
+        ? `<span style="font-size:12px;color:var(--muted);font-style:italic">Role not yet filled</span>`
+        : arc.people.map(name => {
+            const key = name.toLowerCase();
+            return `<span class="ac-chip" onclick="showPage('${key}')" style="color:${arc.color};border-color:${arc.color}20;background:${arc.color}10">${name}</span>`;
+          }).join('')
+      }
+    </div>
+  `;
+  arcGrid.appendChild(card);
+});
+
+// ─── Build person pages ───
+Object.entries(PEOPLE).forEach(([key, p]) => {
+  const arc = ARCHETYPES.find(a => a.id === p.archetype);
+  const AC = arc.color;
+
+  const page = document.createElement('div');
+  page.className = 'page';
+  page.id = 'page-' + key;
+
+  // Spectra HTML
+  const spectraHTML = (p.spectra||[]).map(s => `
+    <div class="sp-row">
+      <div class="sp-labels"><span class="sp-l">${s.l}</span><span class="sp-r">${s.r}</span></div>
+      <div class="sp-track">
+        <div class="sp-now" style="left:${s.now}%;background:${AC};opacity:0.35"></div>
+        <div class="sp-target" style="left:${s.target}%;background:${AC}"></div>
+      </div>
+    </div>`).join('');
+
+  // Quotes HTML
+  const quotesHTML = p.quotes.map(q => `
+    <div class="quote-card">
+      <span class="qc-mark">"</span>
+      <div class="qc-text">${q.text}</div>
+      <div class="qc-context">${q.context}</div>
+    </div>`).join('');
+
+  // Needs HTML
+  const needsHTML = (p.needs||[]).map(n => `
+    <div class="need-card">
+      <div class="nc-label">${n.label}</div>
+      <div class="nc-title">${n.title}</div>
+      <div class="nc-body">${n.body}</div>
+    </div>`).join('');
+
+  page.innerHTML = `
+    <button class="back-btn container" onclick="showPage('overview')">&#8592; Back to overview</button>
+    <div class="person-hero">
+      <div class="container">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow" style="color:${AC}">${arc.label} Archetype</div>
+            <h1 class="ph-name" style="color:var(--ink)">${p.name}</h1>
+            <div class="ph-role">${p.role}</div>
+            <div class="ph-badge" style="color:${AC};border-color:${AC}30;background:${AC}10">
+              <span style="width:6px;height:6px;border-radius:50%;background:${AC};display:inline-block"></span>
+              ${arc.label}
+            </div>
+            <div class="ph-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+              ${p.tags.map(t=>`<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--off);border:1px solid var(--border);color:var(--muted)">${t}</span>`).join('')}
+            </div>
+            <p class="ph-core">${p.core}</p>
+          </div>
+          <div class="journey-panel">
+            <div class="jp-title">Your journey</div>
+            ${spectraHTML}
+            <div class="sp-legend">
+              <div class="sp-leg"><div class="sp-leg-dot" style="background:${AC};opacity:0.35"></div>Where you are</div>
+              <div class="sp-leg"><div class="sp-leg-dot" style="background:${AC}"></div>Where we are headed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="person-body">
+      <div class="container">
+        <div class="pb-section fi">
+          <div class="pbs-label">Your superpower</div>
+          <div class="superpower-card">
+            <div class="sp-card-eyebrow">What you do that nobody else does</div>
+            <div class="sp-card-title">${p.superpower.title}</div>
+            <div class="sp-card-body">${p.superpower.body}</div>
+          </div>
+        </div>
+        <div class="pb-section fi">
+          <div class="pbs-label">In your own words</div>
+          <div class="quotes-grid">${quotesHTML}</div>
+        </div>
+        <div class="pb-section fi">
+          <div class="pbs-label">What you need from the team around you</div>
+          <div class="need-grid">${needsHTML}</div>
+        </div>
+        <div class="pb-section fi">
+          <div class="pbs-label">What the future requires from you</div>
+          <div class="oh-card">
+            <div class="oh-eyebrow" style="color:${AC}">Looking ahead</div>
+            <div class="oh-title">${p.futureRequires.title}</div>
+            <div class="oh-body">${p.futureRequires.body}</div>
+            <div class="oh-offerings">${(p.futureRequires.items||[]).map(o=>`<span class="oh-chip" style="background:color-mix(in srgb,${AC} 10%,transparent);color:${AC};border-color:color-mix(in srgb,${AC} 25%,transparent)">${o}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(page);
+});
+
+// ─── Build Implementor page ───
+(function(){
+  const AC = '#6B6B6B';
+  const page = document.createElement('div');
+  page.className = 'page';
+  page.id = 'page-implementor';
+
+  page.innerHTML = `
+    <button class="back-btn container" onclick="showPage('overview')">&#8592; Back to overview</button>
+    <div class="person-hero">
+      <div class="container">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow" style="color:${AC}">The Missing Archetype</div>
+            <h1 class="ph-name" style="color:var(--ink)">The Implementor</h1>
+            <div class="ph-role">Role not yet filled &mdash; Marketwake&apos;s most urgent hire</div>
+            <div class="ph-badge" style="color:${AC};border-color:#6B6B6B30;background:#6B6B6B10">
+              <span style="width:6px;height:6px;border-radius:50%;background:${AC};display:inline-block"></span>
+              Implementor Archetype
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+              <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--off);border:1px solid var(--border);color:var(--muted)">Cross-org execution</span>
+              <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--off);border:1px solid var(--border);color:var(--muted)">Systems builder</span>
+              <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--off);border:1px solid var(--border);color:var(--muted)">Accountability driver</span>
+              <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--off);border:1px solid var(--border);color:var(--muted)">Vision-to-execution translator</span>
+            </div>
+            <p class="ph-core">Every other archetype is present in this leadership team. The Visionary sets the direction. The Innovator generates the ideas. The Strategist builds the frameworks. The Coach develops the people. The Technicians hold the craft. The Creatives hold the standard. <strong>What is missing is the person whose entire job is to take all of that and build it systematically into the company.</strong> Not in one department. Across all of them. Without this role, great ideas stay in conversations. With it, One House becomes operational reality.</p>
+          </div>
+          <div class="journey-panel">
+            <div class="jp-title" style="color:${AC}">Why this role is urgent</div>
+            <div style="margin-bottom:14px">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:6px;line-height:1.6">Every person on this team described a future that requires systematic, cross-org execution. None of them can deliver that alone. This role is the unlock.</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px">
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:${AC};margin-bottom:4px">Without this role</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.55">Ideas accumulate. Frameworks sit in documents. The org stays organized around yesterday.</div>
+              </div>
+              <div style="background:var(--orange-tint);border:1px solid rgba(232,93,38,0.2);border-radius:8px;padding:12px">
+                <div style="font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">With this role</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.55">Decisions become systems. Vision becomes process. One House becomes the way Marketwake actually operates.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="person-body">
+      <div class="container">
+        <div class="pb-section fi">
+          <div class="pbs-label">The superpower this role brings</div>
+          <div class="superpower-card">
+            <div class="sp-card-eyebrow">What only the Implementor can do</div>
+            <div class="sp-card-title">Turn the decisions this team already makes into systems the whole org runs on</div>
+            <div class="sp-card-body">The leadership team at Marketwake is exceptionally capable of seeing what needs to happen and designing how it should work. <strong>The Implementor does not generate new ideas or new direction. They build the infrastructure that makes the existing ideas and direction real.</strong> They are the reason Megan&apos;s ops vision gets built on time. They are the reason Sammy&apos;s frameworks get adopted company-wide. They are the reason Bin&apos;s innovation portfolio gets executed rather than accumulated. They are the operating system the org runs on.</div>
+          </div>
+        </div>
+
+        <div class="pb-section fi">
+          <div class="pbs-label">What this person does</div>
+          <div class="need-grid">
+            <div class="need-card">
+              <div class="nc-label">Primary function</div>
+              <div class="nc-title">Cross-org execution of strategic decisions</div>
+              <div class="nc-body">Takes decisions made by the Visionary, Innovator, and Strategist and <strong>builds them systematically into the company across all teams</strong> &mdash; not in one department, but org-wide. Owns the operating cadence that makes strategy stick.</div>
+            </div>
+            <div class="need-card">
+              <div class="nc-label">Day to day</div>
+              <div class="nc-title">Accountability, process, and follow-through</div>
+              <div class="nc-body">Runs the leadership operating rhythm. Tracks strategic initiatives from decision to completion. <strong>Closes the loop on everything the leadership team commits to</strong> and surfaces what is falling behind before it becomes a fire.</div>
+            </div>
+            <div class="need-card">
+              <div class="nc-label">What they build</div>
+              <div class="nc-title">The systems that scale without heroic effort</div>
+              <div class="nc-body">SOPs, onboarding frameworks, offer intake structures, capacity models, performance dashboards. <strong>The infrastructure that lets the org grow from 50 to 120 people</strong> without requiring the CEO to hold everything together personally.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pb-section fi">
+          <div class="pbs-label">What this person is not</div>
+          <div class="quotes-grid">
+            <div class="quote-card">
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:${AC};margin-bottom:10px">Not a COO</div>
+              <div class="qc-text">A COO owns the P&amp;L and makes resource allocation decisions. The Implementor executes the operating model. <strong>This is an execution role, not a financial leadership role.</strong> The distinction matters for hiring.</div>
+            </div>
+            <div class="quote-card">
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:${AC};margin-bottom:10px">Not a project manager</div>
+              <div class="qc-text">A PM manages individual projects. The Implementor manages the system by which all projects run. <strong>They are not in the weeds of any single engagement &mdash; they are building the weeds-free version of how work happens.</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pb-section fi">
+          <div class="pbs-label">Who they work closest with</div>
+          <div class="need-grid">
+            <div class="need-card">
+              <div class="nc-label">Brooke &mdash; Visionary</div>
+              <div class="nc-title">Translates vision into org-wide execution</div>
+              <div class="nc-body">The Implementor&apos;s primary relationship. <strong>Takes what Brooke decides and builds the process that makes it real</strong> &mdash; reducing the CEO&apos;s operational noise and freeing her to focus on growth and direction.</div>
+            </div>
+            <div class="need-card">
+              <div class="nc-label">Sammy &mdash; Strategist</div>
+              <div class="nc-title">Turns frameworks into operating systems</div>
+              <div class="nc-body">Sammy sees what needs to happen and why. <strong>The Implementor figures out how and by when.</strong> This is the most important partnership in the org for making the One House model real. It needs to be explicitly designed, not left to chance.</div>
+            </div>
+            <div class="need-card">
+              <div class="nc-label">Megan &mdash; Ops</div>
+              <div class="nc-title">Aligns on the operational infrastructure build</div>
+              <div class="nc-body">Megan is the closest thing to an Implementor currently in the building &mdash; but her scope is the CEO&apos;s bandwidth, not the whole company. <strong>The Implementor picks up where Megan&apos;s mandate ends and carries it across every team.</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pb-section fi">
+          <div class="pbs-label">What the future requires from this hire</div>
+          <div class="oh-card">
+            <div class="oh-eyebrow">The profile</div>
+            <div class="oh-title">Someone who gets energy from making other people&apos;s great ideas real.</div>
+            <div class="oh-body">The Implementor is not frustrated by lack of credit. They are not trying to generate the next big idea. <strong>They are the person who looks at a whiteboard full of decisions and feels genuine excitement about building the system that executes all of them.</strong> They have deep experience in agency or service-company operations, a process-design instinct, high emotional intelligence, and the authority to hold leaders accountable to what they committed to. They are not a yes person. They are a follow-through person. <strong>Marketwake does not need this person eventually. It needs them now.</strong></div>
+            <div class="oh-offerings">
+              <span class="oh-chip">Agency or professional services ops background</span>
+              <span class="oh-chip">Process design and systems thinking</span>
+              <span class="oh-chip">Cross-functional authority and EQ</span>
+              <span class="oh-chip">Holds leaders accountable without losing them</span>
+              <span class="oh-chip">Gets energy from execution, not ideation</span>
+              <span class="oh-chip">Comfortable with ambiguity, obsessed with clarity</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  `;
+  document.body.appendChild(page);
+})();
+
+// ─── Navigation ───
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) { page.classList.add('active'); window.scrollTo(0,0); }
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    if (b.textContent.trim().toLowerCase() === id ||
+        (id === 'overview' && b.textContent.trim() === 'Overview')) {
+      b.style.color = 'var(--ink)';
+    }
+  });
+}
+
+// ─── Scroll reveal ───
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:0.07, rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
