@@ -27,6 +27,10 @@
   --amber-tint: #FAEEDA;
   --blue: #2563A8;
   --blue-tint: #E0F5FE;
+  --teal: #0F6E56;
+  --teal-tint: #E6F5F0;
+  --slate: #3D5A80;
+  --slate-tint: #E8EDF2;
   --web: #2563A8;
   --brand: #0E0E0D;
   --perf: #D85A30;
@@ -119,13 +123,13 @@ section{padding:72px 0 56px;position:relative}
 .issue-grid{display:flex;flex-direction:column;gap:20px;margin-top:48px}
 .issue-block{background:var(--off);border:1px solid var(--border);border-radius:14px;overflow:hidden}
 .issue-head{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--border);background:var(--white)}
-.issue-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--purple);line-height:1}
+.issue-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--teal);line-height:1}
 .issue-title{font-size:15px;font-weight:500;color:var(--ink)}
-.issue-owner{font-size:10px;font-weight:500;color:var(--purple);letter-spacing:0.06em;text-transform:uppercase;margin-left:auto;background:var(--purple-tint);padding:3px 10px;border-radius:20px;white-space:nowrap}
+.issue-owner{font-size:10px;font-weight:500;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;margin-left:auto;background:var(--teal-tint);padding:3px 10px;border-radius:20px;white-space:nowrap}
 .issue-body{padding:20px 24px}
 .issue-body ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 .issue-body li{font-size:13px;color:var(--muted);line-height:1.7;padding-left:16px;position:relative}
-.issue-body li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--purple);opacity:0.4}
+.issue-body li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--teal);opacity:0.4}
 .issue-body li strong{font-weight:500;color:var(--ink)}
 .issue-body li ul{margin-top:6px;padding-left:8px}
 .issue-body li li::before{background:var(--muted);opacity:0.25;width:4px;height:4px}
@@ -137,7 +141,7 @@ section{padding:72px 0 56px;position:relative}
 .meeting-block{margin-bottom:32px}
 .meeting-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .meeting-item{font-size:13px;color:var(--muted);line-height:1.7;padding:6px 0;padding-left:16px;position:relative}
-.meeting-item::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--purple);opacity:0.4}
+.meeting-item::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--slate);opacity:0.4}
 .meeting-item strong{font-weight:500;color:var(--ink)}
 
 /* ── ACCOUNT TABLE ── */
@@ -172,11 +176,12 @@ section{padding:72px 0 56px;position:relative}
 <nav>
   <div class="nav-logo">MARKETWAKE</div>
   <div class="nav-links">
-    <button class="nav-link" onclick="goTo('teams')">The Teams</button>
-    <button class="nav-link" onclick="goTo('goals')">Liaison Goals</button>
-    <button class="nav-link" onclick="goTo('role')">The Role</button>
-    <button class="nav-link" onclick="goTo('issues')">Core Issues</button>
-    <button class="nav-link" onclick="goTo('today')">Today</button>
+    <button class="nav-link" style="color:var(--purple)" onclick="goTo('teams')">The Teams</button>
+    <button class="nav-link" style="color:var(--purple)" onclick="goTo('goals')">Liaison Goals</button>
+    <button class="nav-link" style="color:var(--purple)" onclick="goTo('role')">The Role</button>
+    <button class="nav-link" style="color:var(--teal)" onclick="goTo('issues')">Core Issues</button>
+    <button class="nav-link" style="color:var(--slate)" onclick="goTo('today')">Today</button>
+    <button class="nav-link" style="color:var(--amber)" onclick="goTo('pipeline')">Pipeline</button>
   </div>
 </nav>
 
@@ -237,16 +242,6 @@ section{padding:72px 0 56px;position:relative}
         <div class="hier-level">CD</div>
         <div class="hier-divider"></div>
         <div class="hier-level">AD</div>
-        <div class="hier-benefits">
-          <div class="hier-benefits-title">Benefits:</div>
-          <div class="hier-benefit">Dedicated P&L</div>
-          <div class="hier-benefit">Bonus structure</div>
-          <div class="hier-benefit">Team Structure</div>
-          <div class="hier-benefit">In team discipline</div>
-          <div class="hier-benefit">Client hub</div>
-          <div class="hier-benefit">Team onboarding</div>
-          <div class="hier-benefit">Repeatable</div>
-        </div>
       </div>
       <div class="hier-card reveal d2" style="--c:var(--brand)">
         <div class="hier-head">Brand</div>
@@ -255,16 +250,6 @@ section{padding:72px 0 56px;position:relative}
         <div class="hier-level">CD</div>
         <div class="hier-divider"></div>
         <div class="hier-level">AD</div>
-        <div class="hier-benefits">
-          <div class="hier-benefits-title">Benefits:</div>
-          <div class="hier-benefit">Dedicated P&L</div>
-          <div class="hier-benefit">Bonus structure</div>
-          <div class="hier-benefit">Team Structure</div>
-          <div class="hier-benefit">In team discipline</div>
-          <div class="hier-benefit">Client hub</div>
-          <div class="hier-benefit">Team onboarding</div>
-          <div class="hier-benefit">Repeatable</div>
-        </div>
       </div>
       <div class="hier-card reveal d3" style="--c:var(--perf)">
         <div class="hier-head" style="border-top-color:var(--perf)">Performance</div>
@@ -273,16 +258,6 @@ section{padding:72px 0 56px;position:relative}
         <div class="hier-level">CD</div>
         <div class="hier-divider"></div>
         <div class="hier-level">AD</div>
-        <div class="hier-benefits">
-          <div class="hier-benefits-title">Benefits:</div>
-          <div class="hier-benefit">Dedicated P&L</div>
-          <div class="hier-benefit">Bonus structure</div>
-          <div class="hier-benefit">Team Structure</div>
-          <div class="hier-benefit">In team discipline</div>
-          <div class="hier-benefit">Client hub</div>
-          <div class="hier-benefit">Team onboarding</div>
-          <div class="hier-benefit">Repeatable</div>
-        </div>
       </div>
       <div class="hier-card reveal d4" style="--c:var(--social)">
         <div class="hier-head" style="border-top-color:var(--social)">Social</div>
@@ -291,16 +266,18 @@ section{padding:72px 0 56px;position:relative}
         <div class="hier-level">CD</div>
         <div class="hier-divider"></div>
         <div class="hier-level">AD</div>
-        <div class="hier-benefits">
-          <div class="hier-benefits-title">Benefits:</div>
-          <div class="hier-benefit">Dedicated P&L</div>
-          <div class="hier-benefit">Bonus structure</div>
-          <div class="hier-benefit">Team Structure</div>
-          <div class="hier-benefit">In team discipline</div>
-          <div class="hier-benefit">Client hub</div>
-          <div class="hier-benefit">Team onboarding</div>
-          <div class="hier-benefit">Repeatable</div>
-        </div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:14px;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);margin-bottom:14px">Benefits per offering</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Dedicated P&L</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Bonus structure</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Team structure</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">In team discipline</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Client hub</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Team onboarding</span>
+        <span style="font-size:12px;padding:5px 14px;border-radius:20px;background:var(--purple-tint);color:var(--purple);font-weight:500">Repeatable</span>
       </div>
     </div>
   </div>
@@ -343,18 +320,18 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- FOUR OUTCOME TEAMS -->
-<section id="teams" style="background:var(--off)">
+<section id="teams" style="background:var(--purple-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">01</div>
     <div class="reveal">
-      <div class="sec-label">The four outcome teams</div>
+      <div class="sec-label" style="color:var(--purple)">The four outcome teams</div>
       <h2 class="sec-title">Four offerings.<br>Four liaisons.<br>One <em>integrated</em> agency.</h2>
       <p class="sec-body">We are organizing around outcomes, not channels. Each offering is named for what clients get, not what we do. Each has a liaison who brings expertise and context as we build out the discipline from the ground up.</p>
     </div>
     <div class="offering-grid">
       <div class="fo-card reveal d1" style="--c:var(--web)">
         <div class="fo-name">Web Growth</div>
-        <div class="fo-liaison">Liaison: Taylor</div>
+        <div class="fo-liaison">Liaison: Ruben</div>
         <div class="fo-out">A high-performing website that ranks, converts, and represents the brand at the highest level.</div>
         <div class="fo-roles"><span class="fo-role">Web Strategist</span><span class="fo-role">Developer</span><span class="fo-role">UX Designer</span><span class="fo-role">Tech SEO</span><span class="fo-role">Content</span><span class="fo-role">PM</span></div>
       </div>
@@ -384,11 +361,11 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- GOAL OF LIAISONS -->
-<section id="goals" style="background:var(--off)">
+<section id="goals" style="background:var(--purple-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">02</div>
     <div class="reveal">
-      <div class="sec-label">Goal of the liaisons</div>
+      <div class="sec-label" style="color:var(--purple)">Goal of the liaisons</div>
       <h2 class="sec-title">Start with <em>outcomes.</em><br>Work backwards.</h2>
       <p class="sec-body">The liaison role exists to help us build the foundation right. These are the three goals that guide everything we are building toward.</p>
     </div>
@@ -416,11 +393,11 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- ROLE OF THE LIAISON -->
-<section id="role" style="background:var(--white)">
+<section id="role" style="background:var(--purple-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">03</div>
     <div class="reveal">
-      <div class="sec-label">Role of the liaison</div>
+      <div class="sec-label" style="color:var(--purple)">Role of the liaison</div>
       <h2 class="sec-title">Next steps.<br><em>By week of May 4.</em></h2>
       <p class="sec-body">Each liaison has a clear set of deliverables to bring to the table. This is not busy work — it is the information we need to start building each discipline the right way.</p>
     </div>
@@ -472,11 +449,11 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- IDENTIFYING CORE ISSUES TO SCALE -->
-<section id="issues" style="background:var(--off)">
+<section id="issues" style="background:var(--teal-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">04</div>
     <div class="reveal">
-      <div class="sec-label">Identifying core issues to scale</div>
+      <div class="sec-label" style="color:var(--teal)">Identifying core issues to scale</div>
       <h2 class="sec-title">The things we need<br>to <em>fix now.</em></h2>
       <p class="sec-body">We need to be a technology-first, tech-enabled agency with IP that facilitates all processes. These are the core issues we are addressing to get there.</p>
     </div>
@@ -591,11 +568,11 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- TODAY IN MANAGEMENT -->
-<section id="today" style="background:var(--white)">
+<section id="today" style="background:var(--slate-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">05</div>
     <div class="reveal">
-      <div class="sec-label">Today in management</div>
+      <div class="sec-label" style="color:var(--slate)">Today in management</div>
       <h2 class="sec-title">What we are<br><em>doing right now.</em></h2>
       <p class="sec-body">In an effort to move toward the four-offering model, here is what we are putting into motion today.</p>
     </div>
@@ -674,11 +651,11 @@ section{padding:72px 0 56px;position:relative}
 
 
 <!-- PIPELINE -->
-<section id="pipeline" style="background:var(--off)">
+<section id="pipeline" style="background:var(--amber-tint)">
   <div class="container" style="position:relative">
     <div class="sec-num">06</div>
     <div class="reveal">
-      <div class="sec-label">Pipeline</div>
+      <div class="sec-label" style="color:var(--amber)">Pipeline</div>
       <h2 class="sec-title">What's in <em>motion.</em></h2>
     </div>
 
