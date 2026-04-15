@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="https://www.marketwake.com/wp-content/uploads/2024/11/Untitled-design-5-150x150.png">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketwake — Management Rollout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0E0E0D;
+  --white: #FFFFFF;
+  --off: #F8F7F5;
+  --subtle: #F2F0EC;
+  --purple: #534AB7;
+  --purple-tint: #EEEDFB;
+  --muted: #807870;
+  --border: rgba(14,14,13,0.09);
+  --border-mid: rgba(14,14,13,0.14);
+  --green: #1D9E75;
+  --green-tint: #EAF3DE;
+  --red: #A32D2D;
+  --red-tint: #FCEBEB;
+  --amber: #854F0B;
+  --amber-tint: #FAEEDA;
+  --blue: #2563A8;
+  --blue-tint: #E0F5FE;
+  --web: #2563A8;
+  --brand: #0E0E0D;
+  --perf: #D85A30;
+  --social: #B8A800;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.05em;color:var(--ink)}
+.nav-links{display:flex;gap:2px}
+.nav-link{font-size:11px;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:4px;cursor:pointer;border:none;background:none;letter-spacing:0.03em;transition:color 0.15s;white-space:nowrap;text-decoration:none}
+.nav-link:hover{color:var(--ink)}
+
+/* ── CONTAINERS ── */
+section{padding:72px 0 56px;position:relative}
+.container{max-width:1080px;margin:0 auto;padding:0 48px}
+
+/* ── SECTION LABELS ── */
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(14,14,13,0.03);position:absolute;top:-16px;left:24px;line-height:1;pointer-events:none;user-select:none}
+.sec-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:22px;color:var(--ink)}
+.sec-title em{font-style:italic;color:var(--purple)}
+.sec-body{font-size:16px;color:var(--muted);line-height:1.8;max-width:580px}
+.sec-body strong{font-weight:500;color:var(--ink)}
+
+/* ── HERO ── */
+.hero{padding:124px 0 56px;border-bottom:1px solid var(--border);background:var(--white);overflow:hidden;position:relative}
+.hero-rule{position:absolute;top:0;left:0;right:0;bottom:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(14,14,13,0.025) 79px,rgba(14,14,13,0.025) 80px);pointer-events:none}
+.hero-inner{position:relative;z-index:1;padding:0 48px;max-width:1080px;margin:0 auto;width:100%}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple);margin-bottom:28px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);line-height:0.9;letter-spacing:0.01em;margin-bottom:36px;color:var(--ink)}
+.hero-title span{color:var(--purple)}
+.hero-body{font-size:18px;font-weight:300;line-height:1.75;max-width:520px;color:var(--muted);margin-bottom:0}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:0}
+
+/* ── CARDS ── */
+.card{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:28px}
+.card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.card-body{font-size:13px;color:var(--muted);line-height:1.7}
+.card-body strong{font-weight:500;color:var(--ink)}
+
+/* ── OFFERING CARDS ── */
+.offering-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.fo-card{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.fo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--purple));opacity:0.8}
+.fo-name{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:4px;line-height:1.2;color:var(--ink)}
+.fo-liaison{font-size:11px;font-weight:500;color:var(--purple);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px}
+.fo-out{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.fo-roles{display:flex;flex-wrap:wrap;gap:3px}
+.fo-role{font-size:9px;padding:2px 6px;border-radius:10px;background:var(--white);color:var(--muted);border:1px solid var(--border)}
+
+/* ── HIERARCHY CARDS ── */
+.hierarchy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.hier-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;position:relative;overflow:hidden}
+.hier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c,var(--purple))}
+.hier-head{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);background:var(--ink);margin:-24px -24px 20px;padding:14px 20px;letter-spacing:0.04em;border-top:4px solid var(--c,var(--purple))}
+.hier-level{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.hier-divider{height:1px;background:var(--border);margin:10px 0}
+.hier-benefits{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.hier-benefits-title{font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:0.03em}
+.hier-benefit{font-size:11px;color:var(--muted);line-height:1.7}
+
+/* ── GOAL CARDS ── */
+.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.goal-card{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:28px;position:relative;overflow:hidden}
+.goal-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--purple)}
+.goal-num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(14,14,13,0.07);line-height:1;margin-bottom:10px}
+.goal-title{font-size:14px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+.goal-body{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ── TODO LIST ── */
+.todo-section{margin-top:48px}
+.todo-header{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--purple);margin-bottom:6px;letter-spacing:0.03em}
+.todo-sub{font-size:13px;color:var(--muted);margin-bottom:24px;font-style:italic}
+.todo-list{display:flex;flex-direction:column;gap:8px}
+.todo-item{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start}
+.todo-check{width:18px;height:18px;border:2px solid var(--border-mid);border-radius:4px;flex-shrink:0;margin-top:1px}
+.todo-text{font-size:13px;color:var(--ink);line-height:1.6}
+.todo-text span{color:var(--muted);font-size:12px;display:block;margin-top:2px}
+.todo-holding{margin-top:24px;padding:20px;background:var(--purple-tint);border:1px solid rgba(83,74,183,0.18);border-radius:12px}
+.todo-holding-title{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);margin-bottom:10px}
+
+/* ── ISSUE BLOCKS ── */
+.issue-grid{display:flex;flex-direction:column;gap:20px;margin-top:48px}
+.issue-block{background:var(--off);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.issue-head{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--border);background:var(--white)}
+.issue-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--purple);line-height:1}
+.issue-title{font-size:15px;font-weight:500;color:var(--ink)}
+.issue-owner{font-size:10px;font-weight:500;color:var(--purple);letter-spacing:0.06em;text-transform:uppercase;margin-left:auto;background:var(--purple-tint);padding:3px 10px;border-radius:20px;white-space:nowrap}
+.issue-body{padding:20px 24px}
+.issue-body ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.issue-body li{font-size:13px;color:var(--muted);line-height:1.7;padding-left:16px;position:relative}
+.issue-body li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--purple);opacity:0.4}
+.issue-body li strong{font-weight:500;color:var(--ink)}
+.issue-body li ul{margin-top:6px;padding-left:8px}
+.issue-body li li::before{background:var(--muted);opacity:0.25;width:4px;height:4px}
+.issue-callout{margin:12px 0 0;padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);line-height:1.7;font-style:italic}
+.issue-callout strong{font-weight:500;color:var(--ink);font-style:normal}
+
+/* ── MEETING TABLE ── */
+.meeting-grid{margin-top:48px}
+.meeting-block{margin-bottom:32px}
+.meeting-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.meeting-item{font-size:13px;color:var(--muted);line-height:1.7;padding:6px 0;padding-left:16px;position:relative}
+.meeting-item::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--purple);opacity:0.4}
+.meeting-item strong{font-weight:500;color:var(--ink)}
+
+/* ── ACCOUNT TABLE ── */
+.account-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.account-item{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.account-name{font-size:13px;font-weight:500;color:var(--ink)}
+.account-channels{font-size:11px;color:var(--muted)}
+
+/* ── CTA ── */
+#cta{background:var(--purple);color:white;padding:100px 0;text-align:center}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,86px);line-height:0.92;margin-bottom:24px;color:white}
+.cta-body{font-size:17px;font-weight:300;max-width:580px;margin:0 auto;opacity:0.85;line-height:1.8;color:white}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:0.08s}
+.d2{transition-delay:0.16s}
+.d3{transition-delay:0.24s}
+.d4{transition-delay:0.32s}
+
+@media(max-width:800px){
+  .offering-grid,.goal-grid,.hierarchy-grid{grid-template-columns:1fr}
+  .account-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .container{padding:0 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MARKETWAKE</div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="goTo('teams')">The Teams</button>
+    <button class="nav-link" onclick="goTo('goals')">Liaison Goals</button>
+    <button class="nav-link" onclick="goTo('role')">The Role</button>
+    <button class="nav-link" onclick="goTo('issues')">Core Issues</button>
+    <button class="nav-link" onclick="goTo('today')">Today</button>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-rule"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Management Team &middot; Offering Model Rollout</div>
+    <h1 class="hero-title">
+      Building it<br>
+      <span>from the ground up.</span>
+    </h1>
+    <p class="hero-body">The offering lead model is where we are headed, but it requires a full restructuring: dedicated positions, a scalable playbook, real hierarchy, and unique incentives. We are not there yet. Here is what we are doing right now to get there.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- WHY THE OFFERING LEAD WONT WORK YET -->
+<section id="why" style="background:var(--off)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">00</div>
+    <div class="reveal">
+      <div class="sec-label">The reality</div>
+      <h2 class="sec-title">The Offering Lead model<br><em>won't work</em> yet.</h2>
+      <p class="sec-body">We are thinking too small if we try to bolt this onto the current structure. The full offering lead model requires things we have not built yet. Here is why.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px">
+      <div class="card reveal d1">
+        <div class="card-title">Unsustainable Team Structure</div>
+        <div class="card-body">The current team is in a lose-lose situation. No hierarchy or structure to support what we are asking them to do. This role warrants a <strong>dedicated, full-time position.</strong></div>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-title">Requires a Shift in How We Operate</div>
+        <div class="card-body">An offering lead model changes how the company functions at its core. We need to <strong>plan for a fully scalable offerings structure</strong> from the ground up.</div>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-title">Need a Replicable Playbook</div>
+        <div class="card-body">The ultimate opportunity is a model we can take to every Marketwake office we open. <strong>A proven playbook that scales with growth.</strong></div>
+      </div>
+      <div class="card reveal d4">
+        <div class="card-title">Creates Hierarchy with Unique Incentives</div>
+        <div class="card-body">A proper structure means a full hierarchy of clearly defined roles, supported by <strong>unique bonuses and incentives</strong> that reward performance at every level.</div>
+      </div>
+    </div>
+
+    <!-- The future hierarchy -->
+    <div class="reveal" style="margin-top:36px">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);margin-bottom:16px;margin-top:48px">Where we are headed</div>
+    </div>
+    <div class="hierarchy-grid">
+      <div class="hier-card reveal d1" style="--c:var(--web)">
+        <div class="hier-head" style="border-top-color:var(--web)">Web</div>
+        <div class="hier-level">VP / C-Suite</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">CD</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">AD</div>
+        <div class="hier-benefits">
+          <div class="hier-benefits-title">Benefits:</div>
+          <div class="hier-benefit">Dedicated P&L</div>
+          <div class="hier-benefit">Bonus structure</div>
+          <div class="hier-benefit">Team Structure</div>
+          <div class="hier-benefit">In team discipline</div>
+          <div class="hier-benefit">Client hub</div>
+          <div class="hier-benefit">Team onboarding</div>
+          <div class="hier-benefit">Repeatable</div>
+        </div>
+      </div>
+      <div class="hier-card reveal d2" style="--c:var(--brand)">
+        <div class="hier-head">Brand</div>
+        <div class="hier-level">VP / C-Suite</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">CD</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">AD</div>
+        <div class="hier-benefits">
+          <div class="hier-benefits-title">Benefits:</div>
+          <div class="hier-benefit">Dedicated P&L</div>
+          <div class="hier-benefit">Bonus structure</div>
+          <div class="hier-benefit">Team Structure</div>
+          <div class="hier-benefit">In team discipline</div>
+          <div class="hier-benefit">Client hub</div>
+          <div class="hier-benefit">Team onboarding</div>
+          <div class="hier-benefit">Repeatable</div>
+        </div>
+      </div>
+      <div class="hier-card reveal d3" style="--c:var(--perf)">
+        <div class="hier-head" style="border-top-color:var(--perf)">Performance</div>
+        <div class="hier-level">VP / C-Suite</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">CD</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">AD</div>
+        <div class="hier-benefits">
+          <div class="hier-benefits-title">Benefits:</div>
+          <div class="hier-benefit">Dedicated P&L</div>
+          <div class="hier-benefit">Bonus structure</div>
+          <div class="hier-benefit">Team Structure</div>
+          <div class="hier-benefit">In team discipline</div>
+          <div class="hier-benefit">Client hub</div>
+          <div class="hier-benefit">Team onboarding</div>
+          <div class="hier-benefit">Repeatable</div>
+        </div>
+      </div>
+      <div class="hier-card reveal d4" style="--c:var(--social)">
+        <div class="hier-head" style="border-top-color:var(--social)">Social</div>
+        <div class="hier-level">VP / C-Suite</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">CD</div>
+        <div class="hier-divider"></div>
+        <div class="hier-level">AD</div>
+        <div class="hier-benefits">
+          <div class="hier-benefits-title">Benefits:</div>
+          <div class="hier-benefit">Dedicated P&L</div>
+          <div class="hier-benefit">Bonus structure</div>
+          <div class="hier-benefit">Team Structure</div>
+          <div class="hier-benefit">In team discipline</div>
+          <div class="hier-benefit">Client hub</div>
+          <div class="hier-benefit">Team onboarding</div>
+          <div class="hier-benefit">Repeatable</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- OWNERSHIP: ROOT PROBLEM -->
+<section id="ownership" style="background:var(--white)">
+  <div class="container" style="position:relative">
+    <div class="reveal">
+      <div class="sec-label">The root problem</div>
+      <h2 class="sec-title">Undefined <em>ownership</em><br>is compounding everything.</h2>
+      <p class="sec-body">Undefined ownership is creating compounding gaps across how design work gets scoped, executed, and prioritized. Until we solve ownership, nothing else can be structured around it.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px">
+      <div class="reveal d1" style="background:var(--ink);border-radius:14px;padding:28px;grid-column:1/-1">
+        <div style="font-size:18px;font-weight:500;color:var(--white);margin-bottom:8px">Root Cause</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:10px">Ownership is undefined. It is unclear who holds <strong style="color:var(--white)">final accountability</strong> across design work. AM? Platform Specialist? Brooke? Bin? Marley? Or someone else entirely?</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6">Without a defined owner, nothing else can be structured around it.</div>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-title">Missing Effort Framework</div>
+        <div class="card-body">There are no templates or benchmarks for how long work takes. Level of effort is unknown, making it <strong>impossible to scope, staff, or commit to timelines</strong> with confidence.</div>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-title">No Prioritization System</div>
+        <div class="card-body">Without a framework, there is no way to distinguish keystone work from everyday tasks. <strong>Everything feels equally urgent</strong> — which means nothing actually gets treated as a priority.</div>
+      </div>
+      <div class="card reveal d4">
+        <div class="card-title">No Client Hub</div>
+        <div class="card-body">There is no central source of up-to-date client information. The team is <strong>constantly missing context</strong> that should be readily available.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- FOUR OUTCOME TEAMS -->
+<section id="teams" style="background:var(--off)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">01</div>
+    <div class="reveal">
+      <div class="sec-label">The four outcome teams</div>
+      <h2 class="sec-title">Four offerings.<br>Four liaisons.<br>One <em>integrated</em> agency.</h2>
+      <p class="sec-body">We are organizing around outcomes, not channels. Each offering is named for what clients get, not what we do. Each has a liaison who brings expertise and context as we build out the discipline from the ground up.</p>
+    </div>
+    <div class="offering-grid">
+      <div class="fo-card reveal d1" style="--c:var(--web)">
+        <div class="fo-name">Web Growth</div>
+        <div class="fo-liaison">Liaison: Taylor</div>
+        <div class="fo-out">A high-performing website that ranks, converts, and represents the brand at the highest level.</div>
+        <div class="fo-roles"><span class="fo-role">Web Strategist</span><span class="fo-role">Developer</span><span class="fo-role">UX Designer</span><span class="fo-role">Tech SEO</span><span class="fo-role">Content</span><span class="fo-role">PM</span></div>
+      </div>
+      <div class="fo-card reveal d2" style="--c:var(--brand)">
+        <div class="fo-name">Brand & Creative</div>
+        <div class="fo-liaison">Liaison: Marley</div>
+        <div class="fo-out">A defined identity, voice, and visual system that earns trust and differentiates the client in their market.</div>
+        <div class="fo-roles"><span class="fo-role">Brand Strategist</span><span class="fo-role">Creative Dir.</span><span class="fo-role">Art Director</span><span class="fo-role">Copywriter</span><span class="fo-role">Motion</span></div>
+      </div>
+      <div class="fo-card reveal d3" style="--c:var(--perf)">
+        <div class="fo-name">Performance Marketing</div>
+        <div class="fo-liaison">Liaison: Tyler</div>
+        <div class="fo-out">The full digital strategy and lifecycle engine: integrated campaigns across SEO, LLM, creative, email, and every channel that drives full-funnel growth.</div>
+        <div class="fo-roles"><span class="fo-role">Digital Strategist</span><span class="fo-role">SEO/AEO</span><span class="fo-role">Media</span><span class="fo-role">Creative</span><span class="fo-role">Email/Lifecycle</span><span class="fo-role">Data</span></div>
+      </div>
+      <div class="fo-card reveal d4" style="--c:var(--social)">
+        <div class="fo-name">Social Growth</div>
+        <div class="fo-liaison">Liaison: Kendall</div>
+        <div class="fo-out">An active, culturally relevant presence that builds audience and drives real business outcomes.</div>
+        <div class="fo-roles"><span class="fo-role">Social Strategist</span><span class="fo-role">Content Creator</span><span class="fo-role">Video</span><span class="fo-role">Community</span><span class="fo-role">Creator Mgr</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- GOAL OF LIAISONS -->
+<section id="goals" style="background:var(--off)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">02</div>
+    <div class="reveal">
+      <div class="sec-label">Goal of the liaisons</div>
+      <h2 class="sec-title">Start with <em>outcomes.</em><br>Work backwards.</h2>
+      <p class="sec-body">The liaison role exists to help us build the foundation right. These are the three goals that guide everything we are building toward.</p>
+    </div>
+    <div class="goal-grid">
+      <div class="goal-card reveal d1">
+        <div class="goal-num">01</div>
+        <div class="goal-title">Start-to-finish system for clients and employees</div>
+        <div class="goal-body">A complete, end-to-end system that defines how every client engagement is scoped, sold, onboarded, delivered, and renewed — and how every employee fits within that system with clarity on roles, goals, and growth.</div>
+      </div>
+      <div class="goal-card reveal d2">
+        <div class="goal-num">02</div>
+        <div class="goal-title">Be a technology-first agency</div>
+        <div class="goal-body">Technology and IP should facilitate every process. We build tools, templates, and systems that make our work repeatable, scalable, and best-in-class — not dependent on any single person's heroics.</div>
+      </div>
+      <div class="goal-card reveal d3">
+        <div class="goal-num">03</div>
+        <div class="goal-title">Start with outcomes, work backwards</div>
+        <div class="goal-body">Define what the client gets first, then build the process that delivers it. Every offering, every scope, every deliverable should trace back to a clear outcome the client is paying for.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ROLE OF THE LIAISON -->
+<section id="role" style="background:var(--white)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">03</div>
+    <div class="reveal">
+      <div class="sec-label">Role of the liaison</div>
+      <h2 class="sec-title">Next steps.<br><em>By week of May 4.</em></h2>
+      <p class="sec-body">Each liaison has a clear set of deliverables to bring to the table. This is not busy work — it is the information we need to start building each discipline the right way.</p>
+    </div>
+
+    <div class="todo-section reveal d1">
+      <div class="todo-header">To Do Per Person</div>
+      <div class="todo-sub">Due by week of May 4</div>
+      <div class="todo-list">
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text">Share a good scope that serves both us and the client <span>Why was it a good fit? What made it work?</span></div>
+        </div>
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text">Where is there friction now in your discipline? <span>What slows you down, causes rework, or creates confusion?</span></div>
+        </div>
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text">What questions would you need for intake (sent after initial call)? <span>What do you need to know from the client before work begins?</span></div>
+        </div>
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text">What are core deliverables for your discipline for sales? What are add-ons? <span>Define what is standard vs. what is extra.</span></div>
+        </div>
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text">Send examples of portals you like <span>To be used for Anchor inspiration.</span></div>
+        </div>
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-text"><strong>Marley:</strong> Bring goals for each offering as defined in Brand Messaging</div>
+        </div>
+      </div>
+
+      <div class="todo-holding reveal d2">
+        <div class="todo-holding-title">Holding for later</div>
+        <div class="todo-list" style="margin-top:8px">
+          <div class="todo-item" style="background:var(--white)">
+            <div class="todo-check"></div>
+            <div class="todo-text">What are 1-3 ideas on what we can improve in your discipline? <span>Examples: client agendas, social research, QA processes, etc.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- IDENTIFYING CORE ISSUES TO SCALE -->
+<section id="issues" style="background:var(--off)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">04</div>
+    <div class="reveal">
+      <div class="sec-label">Identifying core issues to scale</div>
+      <h2 class="sec-title">The things we need<br>to <em>fix now.</em></h2>
+      <p class="sec-body">We need to be a technology-first, tech-enabled agency with IP that facilitates all processes. These are the core issues we are addressing to get there.</p>
+    </div>
+
+    <div class="issue-grid">
+
+      <!-- 1. Lead designer on all accounts -->
+      <div class="issue-block reveal d1">
+        <div class="issue-head">
+          <div class="issue-num">01</div>
+          <div class="issue-title">Lead designer on all accounts</div>
+          <div class="issue-owner">Review with Mapi</div>
+        </div>
+        <div class="issue-body">
+          <ul>
+            <li><strong>Clarity on roles and goals</strong> — every designer knows exactly what they own</li>
+            <li><strong>What is expected</strong> — clear deliverable standards per engagement</li>
+            <li><strong>Who they report to</strong> — reporting structure defined by discipline</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. Asana prioritization -->
+      <div class="issue-block reveal d2">
+        <div class="issue-head">
+          <div class="issue-num">02</div>
+          <div class="issue-title">Add high priority vs. low in Asana</div>
+        </div>
+        <div class="issue-body">
+          <ul>
+            <li><strong>Write a "what is it" and a "why"</strong> for every task</li>
+            <li><strong>Tell design team</strong> — speak to Charlotte on how she plans her day</li>
+            <li><strong>AM task rules:</strong>
+              <ul>
+                <li>Nothing after Thursday — if so, flags Kiyah + Amber</li>
+                <li>Adding in days as a rule <span style="font-size:11px;color:var(--muted);font-style:italic">(Kiyah to pull list of tasks and min number of days)</span></li>
+                <li>Never change or edit an open task — once in progress you can only add comments, not description. At no point should a creative go back and see changes</li>
+                <li>AMs should read all client feedback before passing back to designer. Digest and filter!</li>
+                <li>Better way to track bucket of hours in Asana</li>
+                <li>Rolling feedback</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. Lunch and Learn -->
+      <div class="issue-block reveal d3">
+        <div class="issue-head">
+          <div class="issue-num">03</div>
+          <div class="issue-title">Lunch and Learn for AM/PMs</div>
+          <div class="issue-owner">Katu + Mai</div>
+        </div>
+        <div class="issue-body">
+          <div class="issue-callout"><strong>Timing:</strong> 2nd week Brooke is back. Topic: What good feedback looks like.</div>
+          <ul style="margin-top:12px">
+            <li><strong>Role as a united front</strong> — AM and creative present together</li>
+            <li><strong>How to prep for meetings</strong></li>
+            <li><strong>Creative owner/boss in the room</strong> — new reporting by discipline</li>
+            <li><strong>Explain what a revision is</strong> — shared definition</li>
+            <li><strong>No checking email</strong> — all context needs to live in Asana</li>
+            <li><strong>Creatives need 2 days heads up</strong> if they are presenting</li>
+            <li><strong>Your job is to defend the "why"</strong> behind the creative before capitulating to a client</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. Feedback and revisions -->
+      <div class="issue-block reveal d4">
+        <div class="issue-head">
+          <div class="issue-num">04</div>
+          <div class="issue-title">Feedback and revisions</div>
+          <div class="issue-owner">Taylor</div>
+        </div>
+        <div class="issue-body">
+          <ul>
+            <li><strong>Identify a tool</strong> for feedback and revisions that can lock — no more moving targets</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5. Sales rules -->
+      <div class="issue-block reveal">
+        <div class="issue-head">
+          <div class="issue-num">05</div>
+          <div class="issue-title">Sales rules</div>
+        </div>
+        <div class="issue-body">
+          <ul>
+            <li><strong>No website as retainer</strong></li>
+            <li><strong>Everything needs a max revision count and pricing</strong></li>
+            <li><strong>Remove hours for reporting</strong></li>
+            <li><strong>No more "up to" language</strong></li>
+            <li><strong>Price table:</strong>
+              <ul>
+                <li>QBR</li>
+                <li>Design/Dev fees ($325/hr — only purchased in blocks of ten)</li>
+              </ul>
+            </li>
+            <li><strong>No web without copy</strong></li>
+            <li><strong>Timelines</strong> — all Gantt charts include 7 days for client feedback</li>
+            <li><strong>Each paid channel</strong> needs to be priced with deliverables separate</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. Listening deals for GPTs -->
+      <div class="issue-block reveal">
+        <div class="issue-head">
+          <div class="issue-num">06</div>
+          <div class="issue-title">Listening deals for GPTs</div>
+        </div>
+        <div class="issue-body">
+          <ul>
+            <li><strong>Explore opportunities</strong> to productize GPT-powered listening and research tools</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- TODAY IN MANAGEMENT -->
+<section id="today" style="background:var(--white)">
+  <div class="container" style="position:relative">
+    <div class="sec-num">05</div>
+    <div class="reveal">
+      <div class="sec-label">Today in management</div>
+      <h2 class="sec-title">What we are<br><em>doing right now.</em></h2>
+      <p class="sec-body">In an effort to move toward the four-offering model, here is what we are putting into motion today.</p>
+    </div>
+
+    <div class="meeting-grid">
+
+      <div class="meeting-block reveal d1">
+        <div class="meeting-title">Anchor + Documentation</div>
+        <div class="meeting-item"><strong>Define what goes in The Anchor</strong> — and identify what else needs to be there</div>
+        <div class="meeting-item">Each liaison contributes examples and portal inspiration</div>
+      </div>
+
+      <div class="meeting-block reveal d2">
+        <div class="meeting-title">Quarterly meetings for social accounts — starting now</div>
+        <div class="account-grid">
+          <div class="account-item">
+            <div class="account-name">Marketwake</div>
+            <div class="account-channels">IG, FB, TT, LI, Pinterest, YT</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">M3</div>
+            <div class="account-channels">LI</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">Soundstripe (May)</div>
+            <div class="account-channels">IG, TT, LI, YT</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">BIP</div>
+            <div class="account-channels">FB, IG, LI</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">Infinity</div>
+            <div class="account-channels">LI</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">VA</div>
+            <div class="account-channels">FB, IG, X, LI</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">Yakima</div>
+            <div class="account-channels">IG, FB, LI</div>
+          </div>
+          <div class="account-item">
+            <div class="account-name">BELAY</div>
+            <div class="account-channels">IG, FB, LI, YT</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meeting-block reveal d3">
+        <div class="meeting-title">Renewals</div>
+        <div class="meeting-item">Identify renewals we want to get ahead of for the future</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="cta-title">WE BUILD THE<br>STRUCTURE.<br>THEN WE SCALE.</h2>
+      <p class="cta-body">The offering lead model is the destination. Right now, we lay the foundation — the playbook, the hierarchy, the systems. Every decision we make today is building the agency that gets us to $50M.</p>
+    </div>
+  </div>
+</section>
+
+
+<script>
+function goTo(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:0.08, rootMargin:'0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
