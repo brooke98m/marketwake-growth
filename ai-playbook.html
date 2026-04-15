@@ -122,23 +122,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;display:flex;ali
   .hero-stats{flex-direction:column;gap:16px}
 }
 
-/* ── Site-wide Navigation Drawer ── */
-.ham-btn{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;border-radius:6px;border:none;background:none;flex-shrink:0;margin-right:8px}
-.ham-btn span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform 0.2s}
-.ham-overlay{display:none;position:fixed;inset:0;z-index:299;background:rgba(0,0,0,0.25)}
-.ham-overlay.open{display:block}
-.ham-drawer{position:fixed;top:0;left:-270px;width:250px;height:100vh;z-index:300;background:#fff;border-right:1px solid var(--border);transition:left 0.25s ease;display:flex;flex-direction:column}
-.ham-drawer.open{left:0}
-.ham-drawer-head{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;padding:16px 20px;border-bottom:1px solid var(--border);color:var(--ink)}
-.ham-drawer a{display:block;padding:13px 20px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:all 0.15s}
-.ham-drawer a:hover{color:var(--ink);background:var(--off)}
-.ham-drawer a.current{color:var(--ink);font-weight:600;background:var(--off)}
 </style>
 </head>
 <body>
 
 <nav>
-  <button class="ham-btn" onclick="toggleHam()" aria-label="Open menu"><span></span><span></span><span></span></button>
   <div class="nav-logo">MARKETWAKE</div>
   <div class="nav-links">
     <button class="nav-link" onclick="go('problems')">The Problems</button>
@@ -146,18 +134,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;display:flex;ali
     <button class="nav-link" onclick="go('milestones')">Milestones</button>
     <button class="nav-link" onclick="go('accountability')">Who Owns What</button>
     <button class="nav-link" onclick="go('tools')">Tools Audit</button>
-    <a href="/offering-leads-rollout.html" class="nav-link" style="color:#534AB7;margin-left:8px;text-decoration:none">Offering Leads &rarr;</a>
+    <a href="/offering-leads-rollout.html" class="nav-link" style="color:#534AB7;margin-left:8px;text-decoration:none">Offering Liaisons &rarr;</a>
   </div>
 </nav>
-<div class="ham-overlay" id="hamOverlay" onclick="toggleHam()"></div>
-<div class="ham-drawer" id="hamDrawer">
-  <div class="ham-drawer-head">MARKETWAKE</div>
-  <a href="/">Response Analysis</a>
-  <a href="/team-archetypes.html">Team Archetypes</a>
-  <a href="/offering-lead.html">Offering Lead</a>
-  <a href="/ai-playbook.html" class="current">AI Playbook</a>
-  <a href="/50m-roadmap.html">50M Roadmap</a>
-</div>
 
 
 <div class="page">
@@ -568,7 +547,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;display:flex;ali
           </div>
           <div class="ai-col">
             <div class="ai-col-label solution">The solution</div>
-            <div class="ai-col-body"><strong>Asana + time tracking integration with auto-alerts.</strong> When a project hits 75% of budgeted hours, Asana triggers a Slack alert to the AM and Offering Lead. Claude drafts a scope conversation email from the alert.
+            <div class="ai-col-body"><strong>Asana + time tracking integration with auto-alerts.</strong> When a project hits 75% of budgeted hours, Asana triggers a Slack alert to the AM and Offering Liaison. Claude drafts a scope conversation email from the alert.
               <div class="ai-tools"><span class="ai-tool">Asana</span><span class="ai-tool">Harvest</span><span class="ai-tool">Slack</span><span class="ai-tool">Claude</span></div>
             </div>
           </div>
@@ -938,7 +917,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;display:flex;ali
         </div>
         <div class="board-items">
           <div class="board-item"><strong>AI for audience insights</strong>Build a repeatable workflow using Claude + platform data to generate monthly audience intelligence reports. First report by May 15.</div>
-          <div class="board-item"><strong>AI content performance analysis</strong>Use AI to identify top-performing content patterns across client accounts. Deliver monthly insight summary to Offering Leads by Jun 1.</div>
+          <div class="board-item"><strong>AI content performance analysis</strong>Use AI to identify top-performing content patterns across client accounts. Deliver monthly insight summary to Offering Liaisons by Jun 1.</div>
         </div>
       </div>
 
@@ -1188,9 +1167,5 @@ document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </section>
 
 
-<script>
-function toggleHam(){document.getElementById('hamDrawer').classList.toggle('open');document.getElementById('hamOverlay').classList.toggle('open')}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('hamDrawer').classList.remove('open');document.getElementById('hamOverlay').classList.remove('open')}});
-</script>
 </body>
 </html>
