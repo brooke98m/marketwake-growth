@@ -1034,6 +1034,52 @@ img, .image-container {
     line-height: 1;
 }
 .pt-plus { color: var(--mw-neon-yellow); margin-left: 0.1rem; }
+
+/* =====================================================
+   DARK MODE SLIDE — for high-impact directive slides
+   ===================================================== */
+.slide.dark {
+    background: var(--mw-black);
+    color: var(--mw-off-white);
+}
+.slide.dark .section-title { color: var(--mw-off-white); }
+.slide.dark .section-tagline { color: rgba(240,241,242,0.7); }
+.slide.dark .eyebrow { color: var(--mw-neon-yellow); }
+.slide.dark .eyebrow .dot { background: var(--mw-neon-yellow); }
+.slide.dark .rule { background: var(--mw-neon-yellow); }
+.slide.dark .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--mw-off-white);
+}
+.slide.dark .card-title { color: var(--mw-off-white); }
+.slide.dark .card-body { color: rgba(240,241,242,0.7); }
+.slide.dark .card-label { color: var(--mw-neon-yellow); }
+.slide.dark .card-label.charcoal { color: var(--mw-neon-yellow); }
+.slide.dark .bullet-list li { color: var(--mw-off-white); }
+.slide.dark .bullet-list li::before { background: var(--mw-neon-yellow); }
+.slide.dark .bullet-list.charcoal li::before { background: var(--mw-neon-yellow); }
+
+/* =====================================================
+   STRONG-PREFIX BULLETS — for key:value style lists
+   used inside split-col bullets in detail slides
+   ===================================================== */
+.bullet-list li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.slide.dark .bullet-list li strong { color: var(--mw-off-white); }
+
+/* small footer note inside split-col */
+.col-footnote {
+    margin-top: clamp(0.6rem, 1.2vw, 1rem);
+    padding-top: clamp(0.5rem, 1vw, 0.75rem);
+    border-top: 1px solid var(--border);
+    font-size: var(--small-size);
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+.col-footnote strong { color: var(--text-secondary); }
 </style>
 </head>
 <body>
@@ -1077,7 +1123,7 @@ img, .image-container {
             </div>
             <div>
                 <span class="label">Length</span>
-                <span class="value">10 slides</span>
+                <span class="value">13 slides</span>
             </div>
         </div>
     </div>
@@ -1112,13 +1158,13 @@ img, .image-container {
             </div>
             <div class="agenda-item reveal" data-delay="5">
                 <div class="agenda-num">04</div>
-                <div class="agenda-name">Q&amp;A</div>
-                <div class="agenda-detail">Catherine. Open floor.</div>
+                <div class="agenda-name">Pipeline</div>
+                <div class="agenda-detail">Q2 snapshot. Recent closes and what's still in motion.</div>
             </div>
             <div class="agenda-item reveal" data-delay="6">
                 <div class="agenda-num">05</div>
-                <div class="agenda-name">Pipeline</div>
-                <div class="agenda-detail">Q2 snapshot. Recent closes and what's still in motion.</div>
+                <div class="agenda-name">Q&amp;A</div>
+                <div class="agenda-detail">Catherine. Open floor.</div>
             </div>
         </div>
     </div>
@@ -1222,7 +1268,7 @@ img, .image-container {
 <section class="slide" data-title="Offering Liaisons">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
-            <div class="rule"></div>
+            <div class="rule teal"></div>
             <div class="eyebrow">Active Initiative<span class="dot"></span>02</div>
             <h2 class="section-title">Offering Liaisons.</h2>
             <p class="section-tagline">Each discipline has a liaison rebuilding the practice from the ground up. The structure, the playbook, the standards.</p>
@@ -1290,7 +1336,7 @@ img, .image-container {
 <section class="slide" data-title="Offering Liaisons · In Process">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
-            <div class="rule"></div>
+            <div class="rule gold"></div>
             <div class="eyebrow">Offering Liaisons<span class="dot"></span>02</div>
             <h2 class="section-title">In process &amp; next steps.</h2>
             <p class="section-tagline">Where we're applying the model right now, and what each liaison owes the team by week of May 4.</p>
@@ -1329,7 +1375,7 @@ img, .image-container {
 <section class="slide" data-title="Client Portal">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
-            <div class="rule"></div>
+            <div class="rule teal"></div>
             <div class="eyebrow">
                 Active Initiative<span class="dot"></span>03
             </div>
@@ -1365,7 +1411,7 @@ img, .image-container {
 <section class="slide" data-title="General Updates">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
-            <div class="rule"></div>
+            <div class="rule gold"></div>
             <div class="eyebrow">
                 Section<span class="dot"></span>02
             </div>
@@ -1413,9 +1459,122 @@ img, .image-container {
 </section>
 
 <!-- =====================================================
-     SLIDE 8 — TRAFFIC MANAGEMENT (Kiyah consolidation)
+     SLIDE 8 — TASKING DETAIL (the new rules)
      ===================================================== -->
-<section class="slide" data-title="Traffic Management">
+<section class="slide" data-title="Tasking · The Rules">
+    <div class="slide-content">
+        <div class="slide-head reveal" data-delay="1">
+            <div class="rule charcoal"></div>
+            <div class="eyebrow">Update 01<span class="dot"></span>Tasking</div>
+            <h2 class="section-title">Tasking. The new rules.</h2>
+            <p class="section-tagline">Process refresh, written down. Read once. Apply forever.</p>
+        </div>
+
+        <div class="split-2col">
+            <div class="split-col reveal" data-delay="2">
+                <h4><span class="accent-chip">Across the Board</span></h4>
+                <ul class="bullet-list">
+                    <li>Mark high priority versus low in Asana.</li>
+                    <li>Write a "what is it" and a "why" for every task.</li>
+                    <li>Design team: speak with Charlotte about how she plans her day.</li>
+                </ul>
+            </div>
+
+            <div class="split-col reveal" data-delay="3">
+                <h4><span class="accent-chip">AM Task Rules</span></h4>
+                <ul class="bullet-list">
+                    <li>Nothing booked after Thursday. If unavoidable, flag Kiyah and Amber.</li>
+                    <li>Add task duration in days. Kiyah will share the minimums.</li>
+                    <li>Never edit an open task. Once in progress, comments only. Creatives should never see description changes.</li>
+                    <li>Read all client feedback before passing to designers. Digest and filter.</li>
+                    <li>Better way to track bucket-of-hours in Asana.</li>
+                    <li>Rolling feedback.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SLIDE 9 — LUNCH AND LEARN DETAIL
+     ===================================================== -->
+<section class="slide" data-title="Lunch and Learn">
+    <div class="slide-content">
+        <div class="slide-head reveal" data-delay="1">
+            <div class="rule gold"></div>
+            <div class="eyebrow">Update 02<span class="dot"></span>Lunch and Learn</div>
+            <h2 class="section-title">What good feedback looks like.</h2>
+            <p class="section-tagline">For AMs and PMs. Hosted by Katu and Mai. Second week Brooke is back.</p>
+        </div>
+
+        <div class="split-2col">
+            <div class="split-col reveal" data-delay="2">
+                <h4><span class="accent-chip">Logistics</span></h4>
+                <ul class="bullet-list">
+                    <li><strong>Audience:</strong> AMs and PMs.</li>
+                    <li><strong>Hosts:</strong> Katu and Mai.</li>
+                    <li><strong>Topic:</strong> What good feedback looks like.</li>
+                    <li><strong>Timing:</strong> 2nd week Brooke is back.</li>
+                </ul>
+            </div>
+
+            <div class="split-col reveal" data-delay="3">
+                <h4><span class="accent-chip">What We'll Cover</span></h4>
+                <ul class="bullet-list">
+                    <li>United front: AMs and creatives present together.</li>
+                    <li>How to prep for meetings.</li>
+                    <li>Creative owner in the room (new reporting by discipline).</li>
+                    <li>A shared definition of "a revision."</li>
+                    <li>No email during meetings. Context lives in Asana.</li>
+                    <li>Two days heads up before creatives present.</li>
+                    <li>Defend the "why" of the work before capitulating to clients.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SLIDE 10 — MONDAY MEETINGS DETAIL
+     ===================================================== -->
+<section class="slide" data-title="Monday Meetings">
+    <div class="slide-content">
+        <div class="slide-head reveal" data-delay="1">
+            <div class="rule teal"></div>
+            <div class="eyebrow">Update 03<span class="dot"></span>Monday Meetings</div>
+            <h2 class="section-title">Telling the story together.</h2>
+            <p class="section-tagline">Every other Monday. 30 minutes. Full team. Breakfast served.</p>
+        </div>
+
+        <div class="split-2col">
+            <div class="split-col reveal" data-delay="2">
+                <h4><span class="accent-chip">From The Team · Poll</span></h4>
+                <ul class="bullet-list">
+                    <li><strong>What do you want to learn?</strong> Examples: AI, public speaking, emotional regulation.</li>
+                    <li><strong>What do you need answers to?</strong> Updates on current MarketWake initiatives, goals, and programs.</li>
+                </ul>
+            </div>
+
+            <div class="split-col reveal" data-delay="3">
+                <h4><span class="accent-chip">From The Exec Team</span></h4>
+                <ul class="bullet-list">
+                    <li>Updates on MarketWake marketing.</li>
+                    <li>Teaching Boodlebox.</li>
+                    <li>Clarity on Pilot Program and Offering Liaisons.</li>
+                </ul>
+                <div class="col-footnote">
+                    <strong>Rhythm:</strong> Regular Mondays for teachings and lessons. Next few Mondays focus on status of programs and initiatives.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SLIDE 11 — TRAFFIC MANAGEMENT (Kiyah consolidation)
+     Dark mode for impact — this is a directive.
+     ===================================================== -->
+<section class="slide dark" data-title="Traffic Management">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
             <div class="rule"></div>
@@ -1425,7 +1584,7 @@ img, .image-container {
         </div>
 
         <div class="three-col" style="grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.75rem);">
-            <div class="card blue reveal" data-delay="2">
+            <div class="card reveal" data-delay="2" style="border-top-color: var(--mw-neon-yellow);">
                 <div class="card-label">Her Domain</div>
                 <h3 class="card-title">Final say on capacity and tasking.</h3>
                 <ul class="bullet-list" style="margin-top: clamp(0.5rem, 1vw, 0.85rem);">
@@ -1436,10 +1595,10 @@ img, .image-container {
                 </ul>
             </div>
 
-            <div class="card charcoal reveal" data-delay="3">
-                <div class="card-label charcoal">The Ask · Managers</div>
+            <div class="card reveal" data-delay="3" style="border-top-color: var(--mw-off-white);">
+                <div class="card-label">The Ask · Managers</div>
                 <h3 class="card-title">Release it. Lead instead.</h3>
-                <ul class="bullet-list charcoal" style="margin-top: clamp(0.5rem, 1vw, 0.85rem);">
+                <ul class="bullet-list" style="margin-top: clamp(0.5rem, 1vw, 0.85rem);">
                     <li>Direct all pipeline and tasking questions to Kiyah.</li>
                     <li>For resourcing, I'll work directly with Kiyah, not each manager.</li>
                     <li>Take that time back for your team.</li>
@@ -1447,8 +1606,8 @@ img, .image-container {
             </div>
         </div>
 
-        <div class="reveal" data-delay="4" style="margin-top: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.85rem, 1.5vw, 1.25rem) clamp(1rem, 2vw, 1.75rem); border-left: 3px solid var(--accent-blue); background: var(--mw-beige); border-radius: 0 8px 8px 0;">
-            <p style="font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 2.2vw, 1.65rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--text-primary);">
+        <div class="reveal" data-delay="4" style="margin-top: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.85rem, 1.5vw, 1.25rem) clamp(1rem, 2vw, 1.75rem); border-left: 3px solid var(--mw-neon-yellow); background: rgba(238,255,37,0.06); border-radius: 0 8px 8px 0;">
+            <p style="font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 2.2vw, 1.65rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--mw-off-white);">
                 Your team needs you to lead, not task or time manage.
             </p>
         </div>
@@ -1456,38 +1615,13 @@ img, .image-container {
 </section>
 
 <!-- =====================================================
-     SLIDE 9 — Q&A (simple, sans, no italic)
-     ===================================================== -->
-<section class="slide" data-title="Q&amp;A">
-    <div class="slide-content">
-        <div class="slide-head reveal" data-delay="1">
-            <div class="rule"></div>
-            <div class="eyebrow">Section<span class="dot"></span>04</div>
-            <h2 class="section-title">Q&amp;A.</h2>
-            <p class="section-tagline">Two conversations before we close.</p>
-        </div>
-
-        <div class="qa-list">
-            <div class="qa-item reveal" data-delay="2">
-                <div class="qa-num">01</div>
-                <div class="qa-text">Questions about Catherine?</div>
-            </div>
-            <div class="qa-item reveal" data-delay="3">
-                <div class="qa-num">02</div>
-                <div class="qa-text">General Q&amp;A.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- =====================================================
-     SLIDE 9 — PIPELINE (Q2 SNAPSHOT)
+     SLIDE 12 — PIPELINE (Q2 SNAPSHOT)
      ===================================================== -->
 <section class="slide" data-title="Pipeline">
     <div class="slide-content">
         <div class="slide-head reveal" data-delay="1">
             <div class="rule"></div>
-            <div class="eyebrow">Section<span class="dot"></span>05</div>
+            <div class="eyebrow">Section<span class="dot"></span>04</div>
             <h2 class="section-title">Pipeline.</h2>
             <p class="section-tagline">Q2 snapshot. Recent closes and what's still in motion.</p>
         </div>
@@ -1626,6 +1760,31 @@ img, .image-container {
         <div class="pipeline-total reveal" data-delay="5">
             <span class="pt-label">Pipeline Total · Active opportunity value</span>
             <span class="pt-amt">$817,470<span class="pt-plus">+</span></span>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SLIDE 13 — Q&A (closing slide, sans, no italic)
+     ===================================================== -->
+<section class="slide" data-title="Q&amp;A">
+    <div class="slide-content">
+        <div class="slide-head reveal" data-delay="1">
+            <div class="rule teal"></div>
+            <div class="eyebrow">Section<span class="dot"></span>05</div>
+            <h2 class="section-title">Q&amp;A.</h2>
+            <p class="section-tagline">Two conversations before we close.</p>
+        </div>
+
+        <div class="qa-list">
+            <div class="qa-item reveal" data-delay="2">
+                <div class="qa-num">01</div>
+                <div class="qa-text">Questions about Catherine?</div>
+            </div>
+            <div class="qa-item reveal" data-delay="3">
+                <div class="qa-num">02</div>
+                <div class="qa-text">General Q&amp;A.</div>
+            </div>
         </div>
     </div>
 </section>
