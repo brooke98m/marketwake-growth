@@ -875,6 +875,165 @@ img, .image-container {
     color: var(--accent-blue);
     line-height: 1;
 }
+
+/* =====================================================
+   PIPELINE SLIDE — Q2 snapshot, deal grid + grand total
+   Two columns (Proposal / In Review w/ Client) and a
+   black grand-total bar with neon-yellow plus accent
+   ===================================================== */
+.recent-closes {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(0.5rem, 1vw, 0.85rem);
+    padding: clamp(0.45rem, 0.9vw, 0.65rem) clamp(0.85rem, 1.5vw, 1.25rem);
+    background: var(--mw-beige);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    margin-bottom: clamp(0.65rem, 1.2vw, 1rem);
+    font-size: var(--small-size);
+    flex-wrap: wrap;
+}
+.rc-label {
+    font-family: var(--font-body);
+    font-size: var(--tiny-size);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: var(--accent-blue);
+    white-space: nowrap;
+}
+.rc-list {
+    color: var(--text-secondary);
+    line-height: 1.4;
+    flex: 1;
+    min-width: 0;
+}
+
+.pipeline-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 35fr 65fr;
+    gap: clamp(1rem, 2vw, 2rem);
+    min-height: 0;
+    margin-top: clamp(0.5rem, 1vw, 0.85rem);
+}
+@media (max-width: 820px) {
+    .pipeline-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+.pipeline-col { display: flex; flex-direction: column; min-height: 0; }
+.pipeline-col-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: clamp(0.35rem, 0.7vh, 0.55rem);
+    border-bottom: 1.5px solid var(--mw-black);
+    margin-bottom: clamp(0.45rem, 0.9vw, 0.75rem);
+}
+.pipeline-col-head h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.05rem, 1.85vw, 1.4rem);
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+.pipeline-col-head .count {
+    font-family: var(--font-mono);
+    font-size: var(--tiny-size);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+}
+.deals-list { list-style: none; flex: 1; display: flex; flex-direction: column; }
+.deal {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: clamp(0.45rem, 0.9vw, 0.85rem);
+    align-items: baseline;
+    padding: clamp(0.22rem, 0.5vh, 0.4rem) 0;
+    border-top: 1px solid var(--border);
+}
+.deal:first-child { border-top: 0; }
+.deal-rank {
+    font-family: var(--font-mono);
+    font-size: clamp(0.62rem, 0.8vw, 0.75rem);
+    color: var(--accent-blue);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    align-self: start;
+    padding-top: 0.3em;
+    min-width: 1.6em;
+}
+.deal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    min-width: 0;
+}
+.deal-name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: clamp(0.78rem, 0.95vw, 0.95rem);
+    color: var(--text-primary);
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+}
+.deal-service {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(0.65rem, 0.76vw, 0.76rem);
+    color: var(--text-muted);
+    line-height: 1.25;
+}
+.deal-amt {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(0.78rem, 0.95vw, 0.95rem);
+    color: var(--accent-blue);
+    text-align: right;
+    align-self: start;
+    padding-top: 0.1em;
+    font-feature-settings: "tnum";
+    white-space: nowrap;
+}
+.deal-amt.tbd {
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+}
+
+.pipeline-total {
+    margin-top: clamp(0.45rem, 0.9vw, 0.75rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--mw-black);
+    color: var(--mw-white);
+    padding: clamp(0.55rem, 1vh, 0.85rem) clamp(0.85rem, 1.6vw, 1.5rem);
+    border-radius: 4px;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.pt-label {
+    font-family: var(--font-body);
+    font-size: var(--tiny-size);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    color: rgba(249,249,249,0.7);
+}
+.pt-amt {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.4vw, 2.4rem);
+    letter-spacing: -0.02em;
+    color: var(--mw-white);
+    font-feature-settings: "tnum";
+    line-height: 1;
+}
+.pt-plus { color: var(--mw-neon-yellow); margin-left: 0.1rem; }
 </style>
 </head>
 <body>
@@ -918,7 +1077,7 @@ img, .image-container {
             </div>
             <div>
                 <span class="label">Length</span>
-                <span class="value">8 slides</span>
+                <span class="value">9 slides</span>
             </div>
         </div>
     </div>
@@ -950,6 +1109,11 @@ img, .image-container {
                 <div class="agenda-num">03</div>
                 <div class="agenda-name">Q&amp;A</div>
                 <div class="agenda-detail">Catherine. Open floor.</div>
+            </div>
+            <div class="agenda-item reveal" data-delay="5">
+                <div class="agenda-num">04</div>
+                <div class="agenda-name">Pipeline</div>
+                <div class="agenda-detail">Q2 snapshot. Recent closes and what's still in motion.</div>
             </div>
         </div>
     </div>
@@ -1264,6 +1428,156 @@ img, .image-container {
                 <div class="qa-num">02</div>
                 <div class="qa-text">General Q&amp;A.</div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SLIDE 9 — PIPELINE (Q2 SNAPSHOT)
+     ===================================================== -->
+<section class="slide" data-title="Pipeline">
+    <div class="slide-content">
+        <div class="slide-head reveal" data-delay="1">
+            <div class="rule"></div>
+            <div class="eyebrow">Section<span class="dot"></span>04</div>
+            <h2 class="section-title">Pipeline.</h2>
+            <p class="section-tagline">Q2 snapshot. Recent closes and what's still in motion.</p>
+        </div>
+
+        <div class="recent-closes reveal" data-delay="2">
+            <span class="rc-label">Recent Closes</span>
+            <span class="rc-list">5Q GTM Project · Braze YouTube Audit · DCA Page · Impact Dev Hours · Phosphorus Renewal · Sylvan Dev Hours · Yamaha Renewal</span>
+        </div>
+
+        <div class="pipeline-grid">
+            <!-- PROPOSAL COLUMN -->
+            <div class="pipeline-col reveal" data-delay="3">
+                <div class="pipeline-col-head">
+                    <h3>Proposal</h3>
+                    <span class="count">02 deals</span>
+                </div>
+                <ul class="deals-list">
+                    <li class="deal">
+                        <span class="deal-rank">01</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Fargo Jet Center</span>
+                            <span class="deal-service">HubSpot Implementation</span>
+                        </div>
+                        <span class="deal-amt tbd">TBD</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">02</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Tackle</span>
+                            <span class="deal-service">HubSpot Implementation</span>
+                        </div>
+                        <span class="deal-amt tbd">TBD</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- IN REVIEW COLUMN -->
+            <div class="pipeline-col reveal" data-delay="4">
+                <div class="pipeline-col-head">
+                    <h3>In Review w/ Client</h3>
+                    <span class="count">11 deals</span>
+                </div>
+                <ul class="deals-list">
+                    <li class="deal">
+                        <span class="deal-rank">01</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Braze</span>
+                            <span class="deal-service">10 Briefs</span>
+                        </div>
+                        <span class="deal-amt">$2,500</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">02</span>
+                        <div class="deal-body">
+                            <span class="deal-name">E3 Tech</span>
+                            <span class="deal-service">Website</span>
+                        </div>
+                        <span class="deal-amt">$92,000</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">03</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Evident</span>
+                            <span class="deal-service">Content Index</span>
+                        </div>
+                        <span class="deal-amt">$18,250</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">04</span>
+                        <div class="deal-body">
+                            <span class="deal-name">ezCater</span>
+                            <span class="deal-service">Programmatic</span>
+                        </div>
+                        <span class="deal-amt">$120,000</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">05</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Sayers</span>
+                            <span class="deal-service">Dev, SEO, Content Retainer</span>
+                        </div>
+                        <span class="deal-amt">$195,000</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">06</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Signature</span>
+                            <span class="deal-service">Campaign / Video</span>
+                        </div>
+                        <span class="deal-amt">$65,200</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">07</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Signature</span>
+                            <span class="deal-service">Campaign Tracking</span>
+                        </div>
+                        <span class="deal-amt">$2,700</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">08</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Sylvan</span>
+                            <span class="deal-service">GMB</span>
+                        </div>
+                        <span class="deal-amt">$18,920</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">09</span>
+                        <div class="deal-body">
+                            <span class="deal-name">Sylvan</span>
+                            <span class="deal-service">Office Art</span>
+                        </div>
+                        <span class="deal-amt">$5,150</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">10</span>
+                        <div class="deal-body">
+                            <span class="deal-name">T.Lake</span>
+                            <span class="deal-service">SEO, Content, GBP, Social, Email, Paid</span>
+                        </div>
+                        <span class="deal-amt">$192,000</span>
+                    </li>
+                    <li class="deal">
+                        <span class="deal-rank">11</span>
+                        <div class="deal-body">
+                            <span class="deal-name">The Bunk Golf Co</span>
+                            <span class="deal-service">Paid Meta + Local SEO Mgmt + Content Production</span>
+                        </div>
+                        <span class="deal-amt">$105,750</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pipeline-total reveal" data-delay="5">
+            <span class="pt-label">Pipeline Total · Active opportunity value</span>
+            <span class="pt-amt">$817,470<span class="pt-plus">+</span></span>
         </div>
     </div>
 </section>
